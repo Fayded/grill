@@ -1,11 +1,165 @@
 ---
-import menu from '../assets/menu.pdf';
+// import menu from '../assets/menu.pdf';
 import Layout from '../layouts/Layout.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+type Course = {
+  course: string;
+  price?: number;
+  description?: string;
+  items: Array<{
+    name: string;
+    price?: number | string;
+    description?: string;
+  }>;
+  additionalItems?: Array<{
+    name: string;
+    price: number;
+  }>;
+};
+type Menu = Array<Course>;
+type MenuItem = {
+  name: string;
+  price?: number | string;
+  description?: string;
+};
+type AdditionalItem = {
+  name: string;
+  price: number;
+};
+const menu: Course[] = [{
+  course: 'Get Started',
+  items: [
+    { name: 'Onion Rings', price: 9 },
+    { name: 'Side Salad', price: 6 },
+    { name: 'Fried Mushrooms', price: 8 },
+    { name: 'Corn Fritters', price: 9 },
+    { name: 'Bowl of Chili', price: 6 },
+    { name: 'Chicken Tenders', price: 12, description: 'Ranch or Honey Mustard'}
+  ]
+},
+{
+  course: 'Fresh Salads',
+  price: 14, 
+  items: [
+      { name: 'Feta Chicken', description: 'Dried Cranberries & Candied Walnuts' },
+      { name: 'Chef', description: 'Turkey, Ham, Egg, Tomato, Cheese, Onion, & Cucumber' },
+      { name: 'Grilled Chicken', description: 'Egg, Tomato, Onions, Cheese, & Cucumber' },
+      { name: 'Southern Fried', description: 'Bacon, Egg, Cheese, Tomato, & Croutons' },
+      { name: 'Cobb', description: 'Chicken, Blue Cheese, Bacon, Egg, Onion, & Tomato' },
+      { name: 'Greek', description: 'Feta, Olives, Tomato, Onions, Cucumber, & Peppers' },
+    ],
+  additionalItems: [
+    { name: 'Soup & Salad Combo', price: 12 },
+  ]
+},
+{
+  course: 'Sandwiches',
+  price: 12,
+  description: 'Served with One Side',
+  items: [
+    { name: 'Pulled Pork', price: 11 },
+    { name: 'Corn Beef-N-Swiss', price: 12 },
+    { name: 'Grilled Chicken', price: 12 },
+    { name: 'Fried Chicken', price: 12 },
+    { name: 'Buffalo Chicken', price: 12 },
+    { name: 'Chicken Salad', price: 12 },
+    { name: 'Tuna Salad', price: 12 },
+    { name: 'BLT', price: 12 },
+    { name: 'Reuben', price: 12 },
+    { name: 'Philly Cheese Steak', price: 12 },
+    { name: 'French Dip', price: 12 },
+    { name: 'Fish Sandwich', price: 12 }
+  ]
+},
+{
+  course: 'Plates',
+  description: 'Served with Two Side',
+  items: [
+    { name: 'Pulled Pork', price: 13 },
+    { name: 'Turkey', price: 14 },
+    { name: 'Grilled Chicken', price: 14 },
+    { name: 'Hand Breaded Chickentenders', price: 16 },
+    { name: 'Sliced Beef AuJus', price: 14 },
+    { name: 'Full Rack Baby Back Ribs', price: 19 },
+    { name: 'Fried Flounder', price: 14 },
+    { name: 'Half Rack Baby Back Ribs', price: 15 },
+    { name: 'Grilled Mahi', price: 16 },
+    { name: '1/2 Roasted Chicken', price: 16 },
+    { name: 'Combo Ribs', price: 19, description: 'Choice of Chicken, Beef, Pork or Turkey' },
+    { name: 'Daily Fried Fish', price: 'MP' },
+    { name: 'Two Meat Combo', price: 17, description: 'Choice of Chicken, Beef, Pork or Turkey' },
+  ]
+},
+{
+  course: 'Grilled Steak Burgers',
+  description: 'Served with One Side',
+  items: [
+    { name: 'Traditional Burger', price: 12 },
+    { name: 'Cheddar Burger', price: 13 },
+    { name: 'Swiss Burger', price: 13 },
+    { name: 'Blackened Blue Cheese', price: 14 },
+  ]
+},
+{
+  course: 'Hand Breaded Chicken Tenders',
+  items: [
+    { name: 'Appetizer Basket', price: 12, description: 'Ranch or Honey Mustard' },
+    { name: 'Kids Tenders', price: 6, description: 'Served with One Side' },
+    { name: 'Tenders Platter', price: 16 },
+    { name: 'Southern Fried Salad', price: 14, description: 'Bacon, Egg, Cheese, Tomato, & Croutons' },
+  ]
+},
+{
+  course: 'Sides',
+  price: 3,
+  items: [
+    { name: 'French Fries' },
+    { name: 'Collard Greens'},
+    { name: 'Corn Fritters' },
+    { name: 'Mac N Cheese' },
+    { name: 'Sweet Potato' },
+    { name: 'Lima Beans' },
+    { name: 'Baked Beans' },
+    { name: 'Onion Rings' },
+    { name: 'Baked Potato' },
+    { name: 'Roasted Corn Sald' },
+    { name: 'Sweet Potato Fries' },
+    { name: 'Fried Okra' },
+  ]
+},
+{
+  course: 'Beverages',
+  price: 3,
+  items: [
+    { name: 'Tea' },
+    { name: 'Soda'},
+    { name: 'Lemonade' },
+    { name: 'Beer' },
+    { name: 'Wine'},
+    { name: 'Seltzer' },
+  ]
+},
+]
 ---
 
 <Layout>
-  <a href={menu} download>Click to Download</a>
+  <h2>Menu</h2>
+  { menu.map((course) => (
+    <div>
+      <h3>{course.course} {course.price && <span>{course.price}</span>}</h3>
+      <ul>
+        {course.items.map((menuItem) => (
+          <li>
+            <p>
+            {menuItem.name} {menuItem.price ? menuItem.price : null }
+            <br />
+              {menuItem.description && <span>{menuItem.description}</span>}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>  
+  ))}
 </Layout>
