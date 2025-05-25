@@ -1,11 +1,29 @@
 ---
-// import "../styles/global.css";
-// import menu from '../assets/menu.pdf';
-import Header from '../components/header/index.astro';
-import Layout from '../layouts/Layout.astro';
-import { type Course } from '../types/courses.ts';
-
-const menu: Course[] = [{
+type Course = {
+  course: string;
+  price?: number;
+  description?: string;
+  items: Array<{
+    name: string;
+    price?: number | string;
+    description?: string;
+  }>;
+  additionalItems?: Array<{
+    name: string;
+    price: number;
+  }>;
+};
+type Menu = Array<Course>;
+type MenuItem = {
+  name: string;
+  price?: number | string;
+  description?: string;
+};
+type AdditionalItem = {
+  name: string;
+  price: number;
+};
+export const menu: Course[] = [{
   course: 'Get Started',
   items: [
     { name: 'Onion Rings', price: 9 },
@@ -120,24 +138,3 @@ const menu: Course[] = [{
 },
 ]
 ---
-
-<Layout>
-  <Header />
-  <h2>Menu</h2>
-  { menu.map((course) => (
-    <div>
-      <h3>{course.course} {course.price && <span>{course.price}</span>}</h3>
-      <ul>
-        {course.items.map((menuItem) => (
-          <li>
-            <p>
-            {menuItem.name} {menuItem.price ? menuItem.price : null }
-            <br />
-              {menuItem.description && <span>{menuItem.description}</span>}
-            </p>
-          </li>
-        ))}
-      </ul>
-    </div>  
-  ))}
-</Layout>
