@@ -1,0 +1,35 @@
+---
+import Email from '../email/index.astro';
+import facebook from '../../assets/facebook.svg';
+import x from '../../assets/x.svg';
+import arrow from '../../assets/arrow.svg';
+import instagram from '../../assets/instagram.svg';
+---
+
+<footer class="border-y border-[#D9C4A2]">
+  <div class="container flex w-full justify-between items-center">
+    <div class="flex flex-col items-center">
+      <a href="#" class="bg-[#D9C4A2] text-[#273E5B] p-3 px-4 leading-none font-bold uppercase flex text-lg tracking-wider mb-6">Work with us <img class="ml-2" src={arrow.src} alt="arrow" /></a>
+      <p class="font-medium mb-2">PRESS INQUIRIES</p> 
+      <a class="text-sm" href="mailto:#">HR@THEGRILLATLJ.COM</a> 
+    </div>  
+    <div class="flex flex-col self-center border-x border-[#D9C4A2] px-45 py-12">
+      <p class="text-[#D9C4A2] flex items-end mb-4">
+        <span class="text-sm leading-none font-normal">TEL.</span>&nbsp;&nbsp;
+        <span class="font-medium text-lg leading-none">863 314 0000</span>
+      </p>
+      <p class="mb-4 text-center uppercase tracking-wider">751 U.S. Highway 27 S, <br>
+      Sebring, FL 33870</p>
+      <a class="text-sm" href="mailto:#">HR@THEGRILLATLJ.COM</a>
+    </div>  
+    <div class="flex flex-col items-center">
+      <h3 class="text-2xl uppercase">Say Hello!</h3>
+      <span class="flex justify-between w-full px-4 mt-4">
+        <a href="#"><img src={x.src} alt="x" fetchpriority="high" /></a>
+        <a href="#"><img src={facebook.src} alt="facebook" fetchpriority="high" /></a>
+        <a href="#"><img src={instagram.src} alt="Instagram" fetchpriority="high" /></a>
+      </span>
+      <Email />
+    </div>
+  </div>
+</footer>

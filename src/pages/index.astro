@@ -1,10 +1,13 @@
 ---
 import "../styles/global.css";
+import Header from '../components/header/index.astro';
+import Footer from '../components/footer/index.astro';
 import Layout from '../layouts/Layout.astro';
-import Welcome from "../components/Welcome.astro";
 
 ---
 
 <Layout class="width-full">
-	<Welcome>
+	<Header />
+	<main>Home Page</main>
+	<Footer />
 </Layout>
