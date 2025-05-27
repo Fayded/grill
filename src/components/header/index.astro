@@ -6,25 +6,26 @@ import x from '../../assets/x.svg';
 import instagram from '../../assets/instagram.svg';
 ---
 
-<header class="container flex w-full justify-between items-stretch">
-  <div class="flex flex-col self-center pl-30">
+<header class="text-[#D9C4A2] grid grid-cols-3 divide-x-1 divide-[#D9C4A2]">
+  <div class="flex flex-col items-center justify-center">
     <p class="mb-4 text-center uppercase tracking-wider">751 U.S. Highway 27 S, <br>
-    Sebring, FL 33870</p>
-    <span class="flex justify-between w-full px-4">
+    Sebring, FL 33870
+    <span class="flex justify-between w-40 px-4 mt-5">
       <a href="#"><img src={x.src} alt="x" fetchpriority="high" /></a>
       <a href="#"><img src={facebook.src} alt="facebook" fetchpriority="high" /></a>
       <a href="#"><img src={instagram.src} alt="Instagram" fetchpriority="high" /></a>
     </span>
+  </p>
   </div>
-  <a href="/" class="p-9 pt-7 flex self-center border-x border-[#D9C4A2] px-45">
-    <img class="logo" src={logo.src} alt="The Grill at Lake Jackson" fetchpriority="high" />
+  <a href="/" class="flex items-center justify-center py-9">
+    <img class="block" src={logo.src} alt="The Grill at Lake Jackson" fetchpriority="high" />
   </a>  
-  <div class="flex flex-col self-center pr-30">
+  <div class="flex flex-col items-center justify-center">
     <p class="text-[#D9C4A2] flex items-end mb-4">
       <span class="text-sm leading-none font-normal">TEL.</span>&nbsp;&nbsp;
       <span class="font-medium text-lg leading-none">863 314 0000</span>
     </p>
-    <a href="#" class="font-normal border-2 border-[#D9C4A2] rounded-full block uppercase px-[28px] py-[17px] leading-none hover:bg-[#D9C4A2] hover:text-[#273E5B]" >Order Online</a>
+    <a href="#" class="font-normal border-2 border-[#D9C4A2] rounded-full uppercase px-[28px] py-[16px] leading-none hover:bg-[#D9C4A2] hover:text-[#273E5B]">Order Online</a>
   </div>
 </header>
 <Nav />
