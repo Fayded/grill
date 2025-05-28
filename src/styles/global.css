@@ -23,14 +23,9 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 
-.home-template {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto;
-  grid-template-areas: 
-    "header header header"
-    "main main main"
-    "footer footer footer";
-  gap: 16px;
-  padding: 20px;
-}
+/* .hours {
+  border: 10px solid transparent;
+  border-image-source: url('../assets/border.svg');
+  border-image-slice: 15;
+  border-image-repeat: round;
+} */
