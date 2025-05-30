@@ -23,9 +23,12 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 
-/* .hours {
-  border: 10px solid transparent;
-  border-image-source: url('../assets/border.svg');
-  border-image-slice: 15;
-  border-image-repeat: round;
-} */
+input {
+  font-family: var(--font-roboto);
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 300;
+  letter-spacing: 1px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
