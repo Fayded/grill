@@ -2,10 +2,10 @@
 import logo from '../assets/logo.svg';
 ---
 
-<div id="container">
-	<main class="bg-[#273E5B]">
+<div id="container flex items-center justify-center h-screen w-screen">
+	<main class="bg-[#273E5B] flex flex-col items-center justify-center h-screen w-screen">
 		<img class="logo" src={logo.src} alt="" fetchpriority="high" />
-		<h2 class="text-[#E4D4BB] text-2xl font-light">Coming soon...</h2>
+		<p class="text-[#D7C3A4] text-2xl font-light mt-10">Coming soon...</p>
 	</main>
 </div>
 
@@ -13,14 +13,6 @@ import logo from '../assets/logo.svg';
 	#container {
 		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
 		height: 100%;
-	}
-
-	main {
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
 	}
 
 	.logo {

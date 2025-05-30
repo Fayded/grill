@@ -6,42 +6,9 @@ import Footer from '../components/footer/index.astro';
 import Layout from '../layouts/Layout.astro';
 import chicken from '../assets/chicken.svg';
 import map from '../assets/map.svg';
-
+import Welcome from '../components/Welcome.astro';
 ---
 
-<Layout class="w-full">
-	<Header />
-	<main class="container grid grid-cols-24">
-		<section class="flex flex-col items-center justify-start my-8 col-span-8 border border-[#D9C4A2] pt-10 pb-8 text-[#D9C4A2]">
-			<h3 class="text-4xl mb-10">HOURS</h3>
-			<div class="flex flex-col items-center">
-				<p class="font-medium">TUESDAY – SATURDAY</p>
-				<p class="font-regular">11:00 AM – 9:00 PM</p>
-			</div>
-			<div class="my-8 font-extralight opacity-50">–––––––––––––––––––––</div>
-			<div class="flex flex-col items-center">
-				<p class="font-medium">SUNDAY</p>
-				<p class="font-regular">11:00 AM – 3:00 PM</p>
-			</div>
-			<div class="my-8 font-extralight opacity-50">–––––––––––––––––––––</div>
-			<div class="flex flex-col items-center">
-				<p class="font-medium">MONDAY</p>
-				<p class="font-regular">CLOSED</p>
-			</div>
-		</section>
-		<section class="items-center justify-center flex flex-col col-span-8">
-			<img src={chicken.src} alt="Chicken" class="w-[333px] brightness-50 opacity-75" />
-		</section>
-		<section class="flex flex-col items-center justify-start col-span-8 justify-content-center my-8 text-[#D9C4A2]">
-			<div class="py-10">
-				<h3 class="text-4xl mb-10 flex justify-between items-center">FIND US <a href="#" class="block ml-6"><img src={map.src} alt="Find Us" /></a></h3>
-				<p class="text-lg uppercase flex items-center text-center leading-10">The grill is located 
-					<br />just south west
-					<br />of lake jackson
-				</p>
-			</div>
-			<Email />
-		</section>
-	</main>
-	<Footer />
+<Layout>
+	<Welcome />
 </Layout>
