@@ -3,6 +3,10 @@
 
 @theme {
   --font-roboto: "Roboto Condensed", sans-serif; 
+  --color-highlights: oklch(0.8259 0.0475 78.77);
+  --color-primary: oklch(0.7767 0.0538 79.28);
+  --color-primary-blue: oklch(0.359 0.0584 254.78);
+  --color-darker-blue: oklch(0.287 0.0584 256.14);
 }
 
 body {
@@ -21,14 +25,4 @@ h1, h2, h3, h4, h5, h6 {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-}
-
-input {
-  font-family: var(--font-roboto);
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 300;
-  letter-spacing: 1px;
-  border: 1px solid #ccc;
-  padding: 10px;
 }

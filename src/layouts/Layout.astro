@@ -1,4 +1,5 @@
 ---
+import "../styles/global.css";
 import Header from '../components/header/index.astro';
 import Footer from '../components/footer/index.astro';
 // const { title } = Astro.props;
@@ -14,7 +15,7 @@ const { title = 'The Grill at Lake' } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="bg-[#273E5B] text-[#E4D4BB] grid grid-rows-[auto_auto_1fr__auto] min-h-screen">
+	<body class="bg-primary-blue text-primary grid grid-rows-[auto_auto_1fr__auto] min-h-screen">
 		<Header />
 			<slot />
 		<Footer />

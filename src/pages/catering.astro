@@ -1,70 +1,70 @@
 ---
 import "../styles/global.css";
-import Header from '../components/header/index.astro';
-// import Email from '../components/email/index.astro';
-import Footer from '../components/footer/index.astro';
 import Layout from '../layouts/Layout.astro';
 
 ---
 
 <Layout class="w-full">
-  <main class="container flex flex-col sm:grid sm:grid-cols-24 my-8 pt-10 pb-8 items-center ">
-    <h3 class="col-span-8 text-4xl uppercase">Catering</h3>
-    <div class="col-span-16 flex flex-col sm:flex-row items-center justify-end gap-4">
-      <a href="#" class="col-span-6 inline-block text-nowrap font-normal border-2 border-[#D9C4A2] rounded-full uppercase px-[28px] py-[16px] leading-none hover:bg-[#D9C4A2] hover:text-[#273E5B]">Menu</a>
-      <a href="#" class="col-span-6 inline-block text-nowrap font-normal border-2 border-[#D9C4A2] rounded-full uppercase px-[28px] py-[16px] leading-none hover:bg-[#D9C4A2] hover:text-[#273E5B]">Order Now</a>
-    </div>
-    <form class="col-span-24 sm:col-span-24 grid grid-cols-24 gap-4 mt-8 dark:[color-scheme:dark] dark:bg-[#273E5B] dark:text-[#D9C4A2]" action="/submit-catering" method="POST">
-      <div class="col-span-24 sm:col-span-10 sm:col-start-2">
-        <label class="block mb-2" for="name">Name:</label>
-        <input type="text" id="name" name="name" required class="w-full p-2 border border-[#D9C4A2] rounded" />
+  <main>
+    <section class="grid grid-cols-24 mt-10">
+      <div class="col-span-8 text-4xl uppercase col-start-2">
+        <h3>Catering</h3>
       </div>
-      <div class="col-span-24 sm:col-span-10 sm:col-start-14">
-        <label class="block mb-2" for="email">Email:</label>
-        <input type="email" id="email" name="email" required class="w-full p-2 border border-[#D9C4A2] rounded" />
+      <div class="col-span-8 col-start-16 flex flex-col sm:flex-row items-center justify-end gap-4">
+        <a href="#" class="col-span-6 inline-block text-nowrap font-normal uppercase px-[28px] py-[16px] leading-none hover:bg-primary hover:text-[#273E5B]">Menu</a>
+        <a href="#" class="col-span-6 inline-block text-nowrap font-normal  uppercase px-[28px] py-[16px] leading-none hover:bg-primary hover:text-[#273E5B]">Order Now</a>
       </div>
-      <div class="col-span-24 sm:col-span-10 sm:col-start-2">
-        <label class="block mb-2" for="street">Street Address:</label>
-        <input type="text" id="street" name="street" required class="w-full p-2 border border-[#D9C4A2] rounded" />
-      </div>
-      <div class="col-span-24 sm:col-span-10 sm:col-start-14">
-        <label class="block mb-2" for="city">City:</label>
-        <input type="text" id="city" name="city" required class="w-full p-2 border border-[#D9C4A2] rounded" />
-      </div>
-      <div class="col-span-24 sm:col-span-10 sm:col-start-2">
-        <label class="block mb-2" for="zip">Zip:</label>
-        <input type="text" id="zip" name="zip" required class="w-full p-2 border border-[#D9C4A2] rounded" />
-      </div>
-      <div class="col-span-24 sm:col-span-10 sm:col-start-14">
-        <label class="block mb-2" for="phone">Phone Number:</label>
-        <input type="text" id="phone" name="phone" required minlength="6" class="w-full p-2 border border-[#D9C4A2] rounded" />
-      </div>
-      <div class="col-span-24 sm:col-span-10 sm:col-start-2">
-        <label class="block mb-2 text-[#D9C4A2]" for="date">Event Date:</label>
-        <input type="date" id="date" name="date" class="w-full p-2 border border-[#D9C4A2] rounded" />
-      </div>
-      <div class="col-span-24 sm:col-span-10 sm:col-start-14">
-        <label class="block mb-2" for="time">Event Time:</label>
-        <input type="time" id="time" name="time" class="w-full p-2 border border-[#D9C4A2] rounded" />
-      </div>
-      <div class="col-span-24 sm:col-span-10 sm:col-start-2">
-        <label class="block mb-2" for="people">Number of People:</label>
-        <input type="text" id="people" name="people" required class="w-full p-2 border border-[#D9C4A2] rounded" />
-      </div>
-      <div class="col-span-24 sm:col-span-10 sm:col-start-14">
-        <label class="block mb-2" for="service">Service Type:</label>
-        <select id="service" name="service" class="w-full p-2 border border-[#D9C4A2] rounded">
-          <option value="pickup">Pick it up</option>
-          <option value="delivered">Have it Delivered (Delivery Fee)</option>
-          <option value="catered">Have it catered by our staff (Service charge)</option>
-        </select>
-      </div>
-      <div class="col-span-24 sm:col-span-10 sm:col-start-2">
-        <label class="block mb-2" for="comments">Comments:</label>
-        <textarea id="comments" name="comments" rows="4" class="w-full p-2 border border-[#D9C4A2] rounded"></textarea>
-      </div>
-      <div class="col-span-24 text-center">
-        <button type="submit" class="font-normal border-2 border-[#D9C4A2] rounded-full uppercase px-[28px] py-[16px] leading-none hover:bg-[#D9C4A2] hover:text-[#273E5B]">Submit</button>
-      </div>
-	</main>
+    </section>
+    <section class="bg-[#1F3551] py-10 mt-4">
+      <form class="container mt-8 grid grid-cols-24" action="/submit-catering" method="POST">
+        <div class="col-span-24 sm:col-span-10 sm:col-start-2">
+          <label class="text-sm uppercase" for="name">Name:</label>
+          <input type="text" id="name" name="name" required class="w-full p-4  mt-2 outline-none text-highlights bg-[#19314F]" />
+        </div>
+        <div class="col-span-24 sm:col-span-10 sm:col-start-14 mt-4">
+          <label class="text-sm uppercase" for="street">Street Address:</label>
+          <input type="text" id="street" name="street" required class="w-full p-4  mt-2 outline-none text-highlights bg-[#19314F]" />
+        </div>
+        <div class="col-span-24 sm:col-span-10 sm:col-start-2">
+          <label class="text-sm uppercase" for="email">Email:</label>
+          <input type="email" id="email" name="email" required class="w-full p-4  mt-2 outline-none text-highlights bg-[#19314F]" />
+        </div>
+        <div class="col-span-24 sm:col-span-6 sm:col-start-14 mt-4">
+          <label class="text-sm uppercase" for="city">City:</label>
+          <input type="text" id="city" name="city" required class="w-full p-4  mt-2 outline-none text-highlights bg-[#19314F]" />
+        </div>
+        <div class="col-span-24 sm:col-span-3 sm:col-start-21 mt-4">
+          <label class="text-sm uppercase" for="zip">Zip:</label>
+          <input type="text" id="zip" name="zip" required class="w-full p-4  mt-2 outline-none text-highlights bg-[#19314F]" />
+        </div>
+        <div class="col-span-24 sm:col-span-6 sm:col-start-2 mt-4">
+          <label class="text-sm uppercase text-primary" for="date">Event Date:</label>
+          <input type="date" id="date" name="date" class="w-full p-4  mt-2 outline-none text-highlights bg-[#19314F]" />
+        </div>
+        <div class="col-span-24 sm:col-span-3 sm:col-start-9 mt-4">
+          <label class="text-sm uppercase" for="time">Event Time:</label>
+          <input type="time" id="time" name="time" class="w-full p-4  mt-2 outline-none text-highlights bg-[#19314F]" />
+        </div>
+        <div class="col-span-24 sm:col-span-10 sm:col-start-14 mt-4">
+          <label class="text-sm uppercase" for="phone">Phone Number:</label>
+          <input type="text" id="phone" name="phone" required minlength="6" class="w-full p-4  mt-2 outline-none text-highlights bg-[#19314F]" />
+        </div>
+        <div class="col-span-24 sm:col-span-10 sm:col-start-2 mt-4">
+          <label class="text-sm uppercase" for="people">Number of People:</label>
+          <input type="number" id="people" name="people" required class="w-full p-4  mt-2 outline-none text-highlights bg-[#19314F]" />
+        </div>
+        <div class="col-span-24 sm:col-span-10 sm:col-start-14 mt-4">
+          <label class="text-sm uppercase" for="service">Service Type:</label>
+          <select id="service" name="service" class="w-full p-4  mt-2 outline-none text-highlights bg-[#19314F]">
+            <option value="pickup">Pick it up</option>
+            <option value="delivered">Have it Delivered (Delivery Fee)</option>
+            <option value="catered">Have it catered by our staff (Service charge)</option>
+          </select>
+        </div>
+        <div class="col-span-24 sm:col-span-10 sm:col-start-2 mt-4">
+          <button type="submit" class="block mt-5 font-normal border-2  outline-none text-highlights bg-[#19314F] rounded-full uppercase px-[28px] py-[16px] leading-none hover:bg-primary hover:text-[#273E5B]">Submit</button>
+        </div>
+      </form>
+    </section>
+  </main>
 </Layout>
