@@ -6,8 +6,8 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout class="w-full">
   <main>
-    <section class="grid grid-cols-24 mt-10">
-      <div class="col-span-8 text-4xl uppercase col-start-2">
+    <section class="container grid grid-cols-24 py-10">
+      <div class="col-span-8 text-4xl uppercase col-start-2 items-center justify-start">
         <h3>Catering</h3>
       </div>
       <div class="col-span-8 col-start-16 flex flex-col sm:flex-row items-center justify-end gap-4">
@@ -15,7 +15,7 @@ import Layout from '../layouts/Layout.astro';
         <a href="#" class="col-span-6 inline-block text-nowrap font-normal  uppercase px-[28px] py-[16px] leading-none hover:bg-primary hover:text-[#273E5B]">Order Now</a>
       </div>
     </section>
-    <section class="bg-[#1F3551] py-10 mt-4">
+    <section class="bg-[#1F3551] py-10">
       <form class="container mt-8 grid grid-cols-24" action="/submit-catering" method="POST">
         <div class="col-span-24 sm:col-span-10 sm:col-start-2">
           <label class="text-sm uppercase" for="name">Name:</label>

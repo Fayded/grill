@@ -1,12 +1,16 @@
 ---
 import "../styles/global.css";
-import Header from '../components/header/index.astro';
 import Email from '../components/email/index.astro';
-import Footer from '../components/footer/index.astro';
 import Layout from '../layouts/Layout.astro';
 import chicken from '../assets/chicken.png';
+import cow from '../assets/cow.png';
+import pig from '../assets/pig.png';
 import map from '../assets/map.svg';
 
+const getRandomImage = () => {
+	const images = [chicken, cow, pig];
+	return images[Math.floor(Math.random() * images.length)];
+};
 ---
 
 <Layout class="w-full">
@@ -29,7 +33,13 @@ import map from '../assets/map.svg';
 			</div>
 		</section>
 		<section class="items-center justify-center flex flex-col col-span-8">
-			<img src={chicken.src} alt="Chicken" class="w-[333px] brightness-50 opacity-75" />
+			{ getRandomImage() === chicken ? (
+				<img class="brightness-50 opacity-75" src={chicken.src} alt="Chicken" />
+			) : getRandomImage() === cow ? (
+				<img class="mix-blend-multiply opacity-70 w-[90%]" src={cow.src} alt="Cow" />
+			) : (
+				<img class="mix-blend-multiply opacity-50 w-[90%]" src={pig.src} alt="Pig" />
+			)}
 		</section>
 		<section class="flex flex-col items-center justify-start col-span-8 justify-content-center my-8 text-primary">
 			<div class="py-10">

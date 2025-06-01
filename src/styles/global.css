@@ -1,8 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Stint+Ultra+Expanded&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Stint+Ultra+Expanded&display=swap');
 @import "tailwindcss";
 
 @theme {
+  --font-inter: "Inter", sans-serif;
   --font-roboto: "Roboto Condensed", sans-serif; 
+  --font-stint: "Stint Ultra Expanded", serif; 
   --color-highlights: oklch(0.8259 0.0475 78.77);
   --color-primary: oklch(0.7767 0.0538 79.28);
   --color-primary-blue: oklch(0.359 0.0584 254.78);
