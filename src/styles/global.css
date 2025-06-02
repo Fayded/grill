@@ -28,3 +28,16 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 1200px;
   margin: 0 auto;
 }
+
+.catering-link svg {
+  stroke: var(--color-primary)
+}
+
+.catering-link:hover svg {
+  stroke: var(--color-primary-blue);
+  transition: fill 0.3s ease;
+}
+
+.work-link:hover svg {
+  fill: var(--color-primary);
+}
