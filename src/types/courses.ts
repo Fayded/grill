@@ -2,7 +2,7 @@ export type Course = {
   course: string;
   price?: number;
   description?: string;
-  items: Array<{
+  items?: Array<{
     name: string;
     price?: number | string;
     description?: string;
@@ -11,6 +11,10 @@ export type Course = {
     name: string;
     price: number;
   }>;
+  additionalInfo?: Array<{
+    name: string;
+    disclaimer?: boolean;
+  }>
 };
 export type Menu = Array<Course>;
 export type MenuItem = {

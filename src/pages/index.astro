@@ -1,14 +1,55 @@
 ---
 import "../styles/global.css";
-import Header from '../components/header/index.astro';
 import Email from '../components/email/index.astro';
-import Footer from '../components/footer/index.astro';
 import Layout from '../layouts/Layout.astro';
-import chicken from '../assets/chicken.svg';
+import chicken from '../assets/chicken.png';
+import cow from '../assets/cow.png';
+import pig from '../assets/pig.png';
 import map from '../assets/map.svg';
-import Welcome from '../components/Welcome.astro';
+
+const getRandomImage = () => {
+	const images = [chicken, cow, pig];
+	return images[Math.floor(Math.random() * images.length)];
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout class="w-full">
+	<main class="container grid grid-cols-24">
+		<section class="flex flex-col items-center justify-start my-8 col-span-24 sm:col-span-8 border border-primary pt-10 pb-8 text-primary">
+			<h3 class="text-4xl mb-10">HOURS</h3>
+			<div class="flex flex-col items-center">
+				<p class="font-medium">TUESDAY – SATURDAY</p>
+				<p class="font-regular">11:00 AM – 9:00 PM</p>
+			</div>
+			<div class="my-8 font-extralight opacity-50">–––––––––––––––––––––</div>
+			<div class="flex flex-col items-center">
+				<p class="font-medium">SUNDAY</p>
+				<p class="font-regular">11:00 AM – 3:00 PM</p>
+			</div>
+			<div class="my-8 font-extralight opacity-50">–––––––––––––––––––––</div>
+			<div class="flex flex-col items-center">
+				<p class="font-medium">MONDAY</p>
+				<p class="font-regular">CLOSED</p>
+			</div>
+		</section>
+		<section class="items-center justify-center flex flex-col col-span-24 sm:col-span-8">
+			{ getRandomImage() === chicken ? (
+				<img class="brightness-50 opacity-75" src={chicken.src} alt="Chicken" />
+			) : getRandomImage() === cow ? (
+				<img class="mix-blend-multiply opacity-70 w-[90%]" src={cow.src} alt="Cow" />
+			) : (
+				<img class="mix-blend-multiply opacity-50 w-[90%]" src={pig.src} alt="Pig" />
+			)}
+		</section>
+		<section class="flex flex-col items-center justify-start col-span-24 sm:col-span-8 justify-content-center my-8 text-primary">
+			<div class="py-10">
+				<h3 class="text-4xl mb-10 flex justify-between items-center">FIND US <a href="https://maps.app.goo.gl/SPYKC3gLM7L8DhgX9" target="_blank" class="block ml-6"><img src={map.src} alt="Find Us" /></a></h3>
+				<p class="text-lg uppercase flex items-center text-center leading-10">The grill is located 
+					<br />just south west
+					<br />of lake jackson
+				</p>
+			</div>
+			<Email />
+		</section>
+	</main>
 </Layout>

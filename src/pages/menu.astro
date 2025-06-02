@@ -1,7 +1,4 @@
 ---
-// import "../styles/global.css";
-// import menu from '../assets/menu.pdf';
-import Header from '../components/header/index.astro';
 import Layout from '../layouts/Layout.astro';
 import { type Course } from '../types/courses.ts';
 
@@ -122,22 +119,27 @@ const menu: Course[] = [{
 ---
 
 <Layout>
-  <Header />
-  <h2>Menu</h2>
-  { menu.map((course) => (
-    <div>
-      <h3>{course.course} {course.price && <span>{course.price}</span>}</h3>
-      <ul>
-        {course.items.map((menuItem) => (
-          <li>
+  <section class="container grid grid-cols-24 py-10 px-4 sm:pl-0">
+    <div class="col-span-24 text-4xl uppercase items-center justify-start">
+      <h3 class="flex items-center">Menu</h3>
+    </div>
+  </section>
+  <section class="container mt-8 pb-10 px-4 sm:pl-0">
+    { menu.map((course) => (
+      <h3 class="text-2xl text-[#EDE1CD] grid-cols-24 uppercase mt-6 mb-2">{course.course} {course.price && <span>{course.price}</span>}</h3>
+      <ul class="grid grid-cols-24">
+        {course.items?.map((menuItem) => ( 
+          <li class="col-span-24 sm:col-span-8 pr-5 mt-2">
+            <p class={menuItem.description ? "text-[#F0DBBA]" : "text-base text-primary"}>
+              {menuItem.name} {menuItem.price ? menuItem.price : null }
+            </p>
             <p>
-            {menuItem.name} {menuItem.price ? menuItem.price : null }
-            <br />
               {menuItem.description && <span>{menuItem.description}</span>}
             </p>
           </li>
         ))}
       </ul>
-    </div>  
-  ))}
+      )
+    )}  
+  </section>
 </Layout>

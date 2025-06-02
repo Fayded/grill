@@ -1,33 +1,35 @@
 ---
 import Email from '../email/index.astro';
-import facebook from '../../assets/facebook.svg';
-import x from '../../assets/x.svg';
 import arrow from '../../assets/arrow.svg';
-import instagram from '../../assets/instagram.svg';
+import Socials from '../socials/index.astro';
 ---
 
-<div class="border-t border-[#D9C4A2]"></div>
-<footer class="container text-[#D9C4A2] flex flex-col sm:grid sm:grid-cols-3 sm:divide-x-1 sm:divide-[#D9C4A2]">
+<div class="border-t border-primary"></div>
+<footer class="container text-primary flex flex-col sm:grid sm:grid-cols-3 sm:divide-x-1 sm:divide-primary">
   <div class="flex flex-col items-center justify-center order-2 sm:order-1">
-    <a href="#" class="bg-[#D9C4A2] text-[#273E5B] p-3 px-5 leading-none font-bold uppercase flex text-lg tracking-wider mb-6">Work with us <img class="ml-2" src={arrow.src} alt="arrow" /></a>
+    <a href="#" class="work-link bg-primary border border-primary hover:bg-primary-blue hover:text-primary hover:border hover:border-primary text-[#273E5B] p-3 px-5 leading-none font-bold uppercase text-lg tracking-wider mb-6 flex items-center">Work with us 
+      <svg class="fill-primary-blue ml-3" width="19" height="11" viewBox="0 0 19 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0.966797" y="3.83105" width="13.5218" height="2.57558" />
+        <path d="M12.9482 0L18.8824 5.08644L12.9482 10.1729V5.08644V0Z" />
+      </svg>
+    </a>
     <p class="font-medium mb-2">PRESS INQUIRIES</p> 
     <a class="text-sm" href="mailto:#">HR@THEGRILLATLJ.COM</a> 
   </div>  
   <div class="flex flex-col items-center py-9 order-1 sm:order-2">
-    <p class="text-[#D9C4A2] flex items-end mb-4">
+    <p class="text-primary flex items-end mb-4">
       <span class="text-sm leading-none font-normal">TEL.</span>&nbsp;&nbsp;
       <span class="font-medium text-lg leading-none">863 314 0000</span>
     </p>
     <p class="mb-4 text-center uppercase tracking-wider">751 U.S. Highway 27 S, <br>
     Sebring, FL 33870</p>
-    <a class="hidden sm:block text-sm" href="mailto:#">HR@THEGRILLATLJ.COM</a>
+    <a class="hidden sm:block text-sm" href="mailto:#">DAN@THEGRILLATLJ.COM</a>
   </div>  
   <div class="flex flex-col items-center justify-center order-3 my-10 sm:my-0">
     <h3 class="text-2xl uppercase mb-4">Say Hello!</h3>
-    <span class="flex mb-6 justify-between px-4 w-40">
-      <a href="#"><img src={x.src} alt="x" fetchpriority="high" /></a>
-      <a href="#"><img src={facebook.src} alt="facebook" fetchpriority="high" /></a>
-      <a href="#"><img src={instagram.src} alt="Instagram" fetchpriority="high" /></a>
+    <span class="flex justify-between px-4 w-40 mb-5">
+      <Socials />
+      </a>
     </span>
     <Email />
   </div>
