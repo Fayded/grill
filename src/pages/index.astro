@@ -6,6 +6,8 @@ import chicken from '../assets/chicken.png';
 import cow from '../assets/cow.png';
 import pig from '../assets/pig.png';
 import map from '../assets/map.svg';
+import map from '../assets/map.svg';
+import building from '../assets/building.png';
 
 const getRandomImage = () => {
 	const images = [chicken, cow, pig];
@@ -41,15 +43,16 @@ const getRandomImage = () => {
 				<img class="mix-blend-multiply opacity-50 w-[90%]" src={pig.src} alt="Pig" />
 			)}
 		</section>
-		<section class="flex flex-col items-center justify-start col-span-22 col-start-2 md:col-span-8 md:col-start-0 justify-content-center my-8 text-primary">
-			<div class="py-10">
+		<section class="p-10 flex flex-col items-center justify-between col-span-22 col-start-2 md:col-span-8 md:col-start-0 my-8 text-primary">
+			<div>
 				<h3 class="text-4xl mb-10 flex justify-between items-center">FIND US <a href="https://maps.app.goo.gl/SPYKC3gLM7L8DhgX9" target="_blank" class="block ml-6"><img src={map.src} alt="Find Us" /></a></h3>
-				<p class="text-lg uppercase flex items-center text-center leading-10">The grill is located 
+				<p class="text-lg uppercase text-center leading-10">The grill is located 
 					<br />just south west
 					<br />of lake jackson
 				</p>
+				<img src={building.src} alt="Building" class="w-full mt-10 opacity-90" />
 			</div>
-			<Email />
+			<!-- <Email /> -->
 		</section>
 	</main>
 </Layout>
