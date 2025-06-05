@@ -100,62 +100,63 @@ const menu: Course[] = [{
 
 ---
 <Layout class="w-full">
-  <main class="px-4 md:pl-0">
-    <section class="container grid grid-cols-24 pt-10 pb-4">
-      <div class="col-span-24 sm:col-span-8 text-4xl uppercase items-center justify-start">
+  <main>
+    <section class="container grid grid-cols-24 py-10">
+      <div class="col-span-22 col-start-2 lg:col-span-8 lg:col-start-2 text-4xl uppercase items-center justify-start mb-4">
         <h3>Catering</h3>
       </div>
-      <div class="col-span-24 sm:col-span-8 sm:col-start-16 flex flex-row items-center justify-between sm:justify-end sm:gap-4">
-        <a href={cateringMenu} target="_blank" class="catering-link border border-primary sm:border-0 col-span-6 sm:col-span-6 text-nowrap font-normal uppercase px-[28px] py-[16px] leading-none hover:bg-primary hover:text-[#273E5B] flex items-center mt-4 sm:mt-0">Menu 
+      <div class="col-start-2 col-span-22 lg:col-span-8 lg:col-start-16 flex flex-row items-center justify-between lg:justify-end lg:gap-4">
+        <a href={cateringMenu} target="_blank" class="catering-link border border-primary lg:border-0 col-span-6 lg:col-span-6 text-nowrap font-normal uppercase px-[28px] py-[16px] leading-none hover:bg-primary hover:text-[#273E5B] flex items-center mt-4 lg:mt-0">Menu 
           <svg class="ml-4"width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.794922 17.5H0.793945V17.499L8.43945 9.85352L0.794922 17.5ZM0.794922 0.500977L9.29297 9L8.4541 9.83789L8.46094 9.83105C8.58831 9.68679 8.73558 9.44496 8.78027 9.14941C8.82287 8.86761 8.76835 8.54897 8.5459 8.26562L8.43945 8.14648L0.793945 0.500977H0.794922Z" />
           </svg>
         </a>
-        <a href="#" id="toggleButton" class="catering-link border border-primary sm:border-0 col-span-6 sm:col-span-6 text-nowrap font-normal uppercase px-[28px] py-[16px] leading-none hover:bg-primary hover:text-[#273E5B] flex items-center mt-4 sm:mt-0">Order Now
+        <a href="#" id="toggleButton" class="catering-link border border-primary lg:border-0 col-span-6 lg:col-span-6 text-nowrap font-normal uppercase px-[28px] py-[16px] leading-none hover:bg-primary hover:text-[#273E5B] flex items-center mt-4 lg:mt-0">Order Now
           <svg class="ml-4"width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.794922 17.5H0.793945V17.499L8.43945 9.85352L0.794922 17.5ZM0.794922 0.500977L9.29297 9L8.4541 9.83789L8.46094 9.83105C8.58831 9.68679 8.73558 9.44496 8.78027 9.14941C8.82287 8.86761 8.76835 8.54897 8.5459 8.26562L8.43945 8.14648L0.793945 0.500977H0.794922Z" />
           </svg>
         </a>
       </div>
     </section>
-    <form class="container mt-8 pb-10 grid grid-cols-24 catering-form hidden transition-all transition-discrete" action="/submit-catering" method="POST">
-      <div class="col-span-24 sm:col-span-10 mt-4">
+    <form class="container mt-8 pb-10 grid grid-cols-24 catering-form transition-all transition-discrete" action="/submit-catering" method="POST">
+      <div class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4">
         <label class="text-base uppercase" for="name">Name:</label>
         <input type="text" id="name" name="name" required class="w-full p-4 mt-2 outline-none text-primary-blue bg-primary font-medium uppercase" />
       </div>
-      <div class="col-span-24 sm:col-span-10 sm:col-start-14 mt-4">
+      <div class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-14 mt-4">
         <label class="text-base uppercase" for="street">Street Address:</label>
         <input type="text" id="street" name="street" required class="w-full p-4 mt-2 outline-none text-primary-blue bg-primary font-medium uppercase" />
       </div>
-      <div class="col-span-24 sm:col-span-10 mt-4">
+      <div class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4">
         <label class="text-base uppercase" for="email">Email:</label>
         <input type="email" id="email" name="email" required class="w-full p-4 mt-2 outline-none text-primary-blue bg-primary font-medium uppercase" />
       </div>
-      <div class="col-span-24 sm:col-span-6 sm:col-start-14 mt-4">
+      <div class="col-span-14 col-start-2 lg:col-span-6 lg:col-start-14 mt-4">
         <label class="text-base uppercase" for="city">City:</label>
         <input type="text" id="city" name="city" required class="w-full p-4 mt-2 outline-none text-primary-blue bg-primary font-medium uppercase" />
       </div>
-      <div class="col-span-24 sm:col-span-3 sm:col-start-21 mt-4">
+      <div class="col-span-6 col-start-18 lg:col-span-3 lg:col-start-21 mt-4">
         <label class="text-base uppercase" for="zip">Zip:</label>
         <input type="text" id="zip" name="zip" required class="w-full p-4 mt-2 outline-none text-primary-blue bg-primary font-medium uppercase" />
       </div>
-      <div class="col-span-24 sm:col-span-6  mt-4">
+
+      <div class="col-span-22 col-start-2 lg:col-span-6 lg:col-start-2 xl:col-start-0 mt-4">
         <label class="text-base uppercase text-primary" for="date">Event Date:</label>
         <input type="date" id="date" name="date" class="w-full p-4 mt-2 outline-none text-primary-blue bg-primary font-medium uppercase" />
       </div>
-      <div class="col-span-24 sm:col-span-3 sm:col-start-8 mt-4">
+      <div class="col-span-22 col-start-2 lg:col-span-3 lg:col-start-9 xl:col-start-9 mt-4">
         <label class="text-base uppercase" for="time">Event Time:</label>
         <input type="time" id="time" name="time" class="w-full p-4 mt-2 outline-none text-primary-blue bg-primary font-medium uppercase fill-red-500" />
       </div>
-      <div class="col-span-24 sm:col-span-10 sm:col-start-14 mt-4">
+      <div class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-14 mt-4">
         <label class="text-base uppercase" for="phone">Phone Number:</label>
         <input type="text" id="phone" name="phone" required minlength="6" class="w-full p-4  mt-2 outline-none text-primary-blue bg-primary font-medium uppercase" />
       </div>
-      <div class="col-span-24 sm:col-span-10  mt-4">
+      <div class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4">
         <label class="text-base uppercase" for="people">Number of People:</label>
         <input type="number" id="people" name="people" required class="w-full p-4  mt-2 outline-none text-primary-blue bg-primary font-medium uppercase" />
       </div>
-      <div class="col-span-24 sm:col-span-10 sm:col-start-14 mt-4">
+      <div class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-14 mt-4">
         <label class="text-base uppercase" for="service">Service Type:</label>
         <select id="service" name="service" class="w-full p-4  mt-2 outline-none text-primary-blue bg-primary font-medium uppercase">
           <option value="pickup">Pick it up</option>
@@ -163,7 +164,7 @@ const menu: Course[] = [{
           <option value="catered">Have it catered by our staff (Service charge)</option>
         </select>
       </div>
-      <button type="submit" class="catering-link border border-primary sm:col-start-21 col-span-12 sm:col-span-3 cursor-pointer text-nowrap font-normal uppercase px-[28px] py-[16px] leading-none hover:bg-primary hover:text-[#273E5B] flex items-center mt-10">Submit
+      <button type="submit" class="catering-link border border-primary col-span-8 col-start-16 lg:col-start-20 lg:col-span-4 cursor-pointer text-nowrap font-normal uppercase px-[28px] py-[16px] leading-none hover:bg-primary hover:text-[#273E5B] flex items-center mt-10 justify-between lg:justify-center">Submit
         <svg class="ml-4"width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0.794922 17.5H0.793945V17.499L8.43945 9.85352L0.794922 17.5ZM0.794922 0.500977L9.29297 9L8.4541 9.83789L8.46094 9.83105C8.58831 9.68679 8.73558 9.44496 8.78027 9.14941C8.82287 8.86761 8.76835 8.54897 8.5459 8.26562L8.43945 8.14648L0.793945 0.500977H0.794922Z" />
         </svg>
@@ -171,21 +172,28 @@ const menu: Course[] = [{
     </form>
     <section class="container mt-8 pb-10">
       { menu.map((course) => (
-        <h3 class="text-3xl text-[#EDE1CD] grid-cols-24 uppercase mt-6 mb-2">{course.course}</h3>
-        <ul class="grid grid-cols-24">
-          {course.items?.map((menuItem) => ( 
-            <li class="col-span-24 sm:col-span-8 pr-5 mt-2">
-              <p class="text-xl text-[#D7C3A4]">{menuItem.name}</p>
-            </li>
-          ))}
-          {course.additionalInfo?.map((info) => (
-            <li class="col-span-24 mt-2">
-              <p class={info.disclaimer ? 'text-primary mt-6 mb-2 text-lg': 'text-[#D7C3A4] text-xl'}>{info.name}</p>
-            </li>
-          ))}
-        </ul>
-        )
-      )}  
+        <section class="grid grid-cols-24 mb-10">
+          <h3 class="text-3xl text-[#EDE1CD] col-start-2 col-span-22 uppercase mt-6 mb-2">{course.course}</h3>
+          { course.items && course.items.length > 0 && 
+            <ul class="row-span-22 row-start-2">
+              {course.items?.map((menuItem) => ( 
+                <li class="col-span-8 mt-4 col-start-2">
+                  <p class="text-xl text-[#D7C3A4]">{menuItem.name}</p>
+                </li>
+              ))}
+            </ul>
+          }
+          {/* { course.additionalInfo && course.additionalInfo.length > 0 && 
+            <ul class="grid grid-cols-24">
+            {course.additionalInfo?.map((info) => (
+              <li class="col-span-22 mt-4">
+                <p class={info.disclaimer ? 'text-primary mt-6 mb-2 text-lg': 'text-[#D7C3A4] text-xl'}>{info.name}</p>
+              </li>
+            ))}
+            </ul>
+          } */}
+        </section>
+      ))}  
     </section>
   </main>
 </Layout>
