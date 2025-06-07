@@ -11,6 +11,8 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.7",
     "astro": "^5.8.0",
+    "grill": "link:",
+    "resend": "^4.5.2",
     "tailwindcss": "^4.1.7"
   }
 }

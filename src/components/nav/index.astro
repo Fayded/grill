@@ -1,22 +1,22 @@
 ---
-
+const currentPath = Astro.url.pathname;
 ---
 <nav class="border-t border-b border-primary mt-8 sm:mt-0">
   <ul class="sm:max-w-[725px] flex justify-around sm:justify-between uppercase tracking-widest mx-auto">
     <li class="hidden sm:block">
-      <a href="/" class="block py-2 hover:text-[#E7DECF]">Home</a>
+      <a href="/" class={currentPath === '/' ? 'active text-[#E9D8BF] block py-2 hover:text-[#E7DECF]' : 'text-primary block py-2 hover:text-[#E7DECF]'}>Home</a>
     </li>
     <li>
-      <a href="/menu" class="block py-2 hover:text-[#E7DECF]">Menu</a>
+      <a href="/menu" class={currentPath === '/menu' ? 'active text-[#E9D8BF] block py-2 hover:text-[#E7DECF]' : 'text-primary block py-2 hover:text-[#E7DECF]'}>Menu</a>
     </li>
     <li>
-      <a href="/about" class="block py-2 hover:text-[#E7DECF]">About</a>
+      <a href="/about" class={currentPath === '/about' ? 'active text-[#E9D8BF] block py-2 hover:text-[#E7DECF]' : 'text-primary block py-2 hover:text-[#E7DECF]'}>About</a>
     </li>
     <li>
-      <a href="/catering" class="block py-2 hover:text-[#E7DECF]">Catering</a>
+      <a href="/catering" class={currentPath === '/catering' ? 'active text-[#E9D8BF] block py-2 hover:text-[#E7DECF]' : 'text-primary block py-2 hover:text-[#E7DECF]'}>Catering</a>
     </li>
     <li>
-      <a href="/location" class="block py-2 hover:text-[#E7DECF]">Location</a>
+      <a href="/location" class={currentPath === '/location' ? 'active text-[#E9D8BF] block py-2 hover:text-[#E7DECF]' : 'text-primary block py-2 hover:text-[#E7DECF]'}>Location</a>
     </li>
   </ul>
 </nav>

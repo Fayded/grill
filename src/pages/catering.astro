@@ -1,8 +1,9 @@
 ---
-import "../../styles/global.css";
-import Layout from '../../layouts/Layout.astro';
-import { type Course } from '../../types/courses.ts';
-import cateringMenu from '../../assets/catering-menu.pdf';
+import "../styles/global.css";
+import Layout from '../layouts/Layout.astro';
+import { type Course } from '../types/courses.ts';
+import cateringMenu from '../assets/catering-menu.pdf';
+import { actions } from "astro:actions";
 
 const menu: Course[] = [{
   course: 'Complete Packages',
@@ -118,10 +119,10 @@ const menu: Course[] = [{
         </a>
       </div>
     </section>
-    <form class="container mt-8 pb-10 grid grid-cols-24 catering-form transition-all transition-discrete" action="/submit-catering" method="POST">
+    <form action={actions.send} method="POST" class="container mt-8 pb-10 grid grid-cols-24 catering-form transition-all transition-discrete">
       <div class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4">
         <label class="text-base uppercase" for="name">Name:</label>
-        <input type="text" id="name" name="name" required class="w-full p-4 mt-2 outline-none text-primary-blue bg-primary font-medium uppercase" />
+        <input type="text" id="name" name="name" required class="bg-primary autofill:bg-primary w-full p-4 mt-2 outline-none text-primary-blue bg-primary font-medium uppercase" />
       </div>
       <div class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-14 mt-4">
         <label class="text-base uppercase" for="street">Street Address:</label>
@@ -170,30 +171,34 @@ const menu: Course[] = [{
         </svg>
       </button>
     </form>
-    <section class="container mt-8 pb-10">
-      { menu.map((course) => (
-        <section class="grid grid-cols-24 mb-10">
-          <h3 class="text-3xl text-[#EDE1CD] col-start-2 col-span-22 uppercase mt-6 mb-2">{course.course}</h3>
-          { course.items && course.items.length > 0 && 
-            <ul class="row-span-22 row-start-2">
-              {course.items?.map((menuItem) => ( 
-                <li class="col-span-8 mt-4 col-start-2">
-                  <p class="text-xl text-[#D7C3A4]">{menuItem.name}</p>
-                </li>
-              ))}
-            </ul>
-          }
-          {/* { course.additionalInfo && course.additionalInfo.length > 0 && 
-            <ul class="grid grid-cols-24">
-            {course.additionalInfo?.map((info) => (
-              <li class="col-span-22 mt-4">
-                <p class={info.disclaimer ? 'text-primary mt-6 mb-2 text-lg': 'text-[#D7C3A4] text-xl'}>{info.name}</p>
+    <section class="container mt-8 pb-10 grid">
+      {menu.map((course) => (
+        <div>
+          <section class="grid grid-cols-24">
+            <h3 class="text-2xl text-[#EDE1CD] grid-cols-24 uppercase mt-6 mb-2 col-span-22 col-start-2">{course.course}</h3>
+          </section>
+        {course.items && (
+          <ul class="grid grid-cols-24">
+            {course.items.map((item) => (
+              <li class="col-span-22 col-start-2 md:col-span-24 md:col-start-2 pr-5 mt-2">
+                <p class="text-lg text-primary">{item.name}</p>
+                {item.description && <p class="text-[#F0DBBA]">{item.description}</p>}
               </li>
             ))}
-            </ul>
-          } */}
-        </section>
-      ))}  
+          </ul>
+        )}
+        {course.additionalInfo && (
+          <ul class="grid grid-cols-24">
+            {course.additionalInfo.map((item) => (
+              <li class="col-span-22 col-start-2 md:col-span-24 md:col-start-2 pr-5 mt-2">
+                <p class="text-lg text-primary">{item.name}</p>
+              </li>
+            ))}
+          </ul>
+        )}
+         </div>
+      ))}
+    
     </section>
   </main>
 </Layout>
