@@ -1,11 +1,12 @@
 import { ActionError, defineAction } from 'astro:actions';
 import { Resend } from 'resend';
 
+const resend = new Resend(import.meta.env.RESEND_API_KEY);
+
 export const server = {
   send: defineAction({
     accept: 'form',
     handler: async () => {
-      const resend = new Resend(process.env.RESEND_API_KEY);
       const { data, error } = await resend.emails.send({
         from: 'Acme <onboarding@resend.dev>',
         to: ['kevin.d.fay@gmail.com'],
