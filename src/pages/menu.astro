@@ -35,6 +35,7 @@ const menu: Course[] = [{
   items: [
     { name: 'Pulled Pork', price: 11 },
     { name: 'Corn Beef-N-Swiss', price: 12 },
+<<<<<<< Updated upstream
     { name: 'Grilled Chicken', price: 12 },
     { name: 'Fried Chicken', price: 12 },
     { name: 'Buffalo Chicken', price: 12 },
@@ -45,6 +46,14 @@ const menu: Course[] = [{
     { name: 'Philly Cheese Steak', price: 12 },
     { name: 'French Dip', price: 12 },
     { name: 'Fish Sandwich', price: 12 }
+=======
+    { name: 'Fried Flounder', price: 12},
+    { name: 'French Dip Choice Beef', price: 13},
+    { name: 'Grilled Chicken', price: 12},
+    { name: 'Turkey Ciabatta', price: 13, description: 'With Tarragon mayo' },
+    { name: 'Mahi Sandwich', price: 14, description: 'Blackened or Lemon Pepper' },
+    { name: 'Daily Sandwich', price: 'MP', description: 'Ask your server!' },
+>>>>>>> Stashed changes
   ]
 },
 {
@@ -60,10 +69,19 @@ const menu: Course[] = [{
     { name: 'Fried Flounder', price: 14 },
     { name: 'Half Rack Baby Back Ribs', price: 15 },
     { name: 'Grilled Mahi', price: 16 },
+<<<<<<< Updated upstream
     { name: '1/2 Roasted Chicken', price: 16 },
     { name: 'Combo Ribs', price: 19, description: 'Choice of Chicken, Beef, Pork or Turkey' },
     { name: 'Daily Fried Fish', price: 'MP' },
     { name: 'Two Meat Combo', price: 17, description: 'Choice of Chicken, Beef, Pork or Turkey' },
+=======
+    { name: 'Daily Fried Fish', price: 'MP' },
+    { name: '1/2 Roasted Chicken', price: 16 },
+    { name: 'Combo Ribs', price: 19, description: 'Choice of Chicken, Beef, Pork or Turkey' },
+    { name: '', price: '' },
+    { name: 'Two Meat Combo', price: 17, description: 'Choice of Chicken, Beef, Pork or Turkey' },
+
+>>>>>>> Stashed changes
   ]
 },
 {
@@ -107,12 +125,25 @@ const menu: Course[] = [{
   course: 'Beverages',
   price: 3,
   items: [
+<<<<<<< Updated upstream
     { name: 'Tea' },
     { name: 'Soda'},
     { name: 'Lemonade' },
     { name: 'Beer' },
     { name: 'Wine'},
     { name: 'Seltzer' },
+=======
+    { name: 'Tea, Soda, Lemonade' },
+  ]
+},
+{
+  course: 'Alcoholic Beverages',
+  items: [
+    { name: 'Beer, Wine, Seltzer' },
+  ],
+  additionalItems: [
+    { name: 'Ask your server for Selections' },
+>>>>>>> Stashed changes
   ]
 },
 ]
@@ -129,15 +160,28 @@ const menu: Course[] = [{
       <h3 class="text-2xl text-[#EDE1CD] grid-cols-24 uppercase mt-6 mb-2">{course.course} {course.price && <span>{course.price}</span>}</h3>
       <ul class="grid grid-cols-24">
         {course.items?.map((menuItem) => ( 
+<<<<<<< Updated upstream
           <li class="col-span-24 sm:col-span-8 pr-5 mt-2">
             <p class={menuItem.description ? "text-[#F0DBBA]" : "text-base text-primary"}>
+=======
+          <li class="col-span-24 sm:col-span-12 pr-5 mt-6">
+            <p class={menuItem.description ? "text-[#F0DBBA] uppercase" : "text-lg font-base uppercase text-primary"}>
+>>>>>>> Stashed changes
               {menuItem.name} {menuItem.price ? menuItem.price : null }
             </p>
-            <p>
+            <p class="uppercase">
               {menuItem.description && <span>{menuItem.description}</span>}
             </p>
           </li>
         ))}
+<<<<<<< Updated upstream
+=======
+        {course.additionalItems?.map((additionalItem) => (
+          <li class="col-span-24 pr-5 my-12 text-center">
+            <p class="text-[#F0DBBA] uppercase">{additionalItem.name} {additionalItem.price ? additionalItem.price : null }</p>
+          </li>
+        ))}
+>>>>>>> Stashed changes
       </ul>
       )
     )}  
