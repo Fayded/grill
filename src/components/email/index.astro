@@ -1,11 +1,32 @@
 ---
-import arrow from '../../assets/right-arrow.svg';
+import { actions, isInputError } from 'astro:actions';
+
+const result = Astro.getActionResult(actions.register);
+const inputErrors = isInputError(result?.error) ? result.error.fields : {};
 ---
-<div class="flex items-center border">
-  <input type="email" placeholder="Join our mailing list" class="uppercase w-60 p-3 leading-none outline:none focus:outline-none text-primary placeholder:text-primary" />
-  <a href="#" class="catering-link w-[44px] p-4 border-l h-[44px] border-primary flex items-center justify-center bg-primary-blue hover:bg-primary text-primary hover:text-[#E7DECF] transition-colors duration-300">
+<form class="flex items-center border" action={actions.register} method="post">
+  <input transition:persist id="email" required type="email" name="email" placeholder="Join our mailing list" class="uppercase w-60 p-3 leading-none outline:none focus:outline-none text-primary placeholder:text-primary" aria-describedby="error" />
+  <button type="submit" class="catering-link w-[44px] p-4 border-l h-[44px] border-primary flex items-center justify-center bg-primary-blue hover:bg-primary text-primary hover:text-[#E7DECF] transition-colors duration-300">
     <svg viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0.794922 17.5H0.793945V17.499L8.43945 9.85352L0.794922 17.5ZM0.794922 0.500977L9.29297 9L8.4541 9.83789L8.46094 9.83105C8.58831 9.68679 8.73558 9.44496 8.78027 9.14941C8.82287 8.86761 8.76835 8.54897 8.5459 8.26562L8.43945 8.14648L0.793945 0.500977H0.794922Z" />
     </svg>       
-  </a>
-</div>
+  </button>
+  {inputErrors.email && <p id="error">{inputErrors.email.join(',')}</p>}
+</form>
+<script>
+  import { actions, isInputError } from 'astro:actions';
+  import { navigate } from 'astro:transitions/client';
+  const form = document.querySelector('form');
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const email = formData.get('email');
+    const { error } = await actions.register({ email: email?.toString() || '' });
+    if (isInputError(error)) {
+      if (error.fields.email) {
+        const message = error.fields.email.join(', ');
+      }
+    }
+    if (!error) navigate('../thank-you');
+  })
+</script>

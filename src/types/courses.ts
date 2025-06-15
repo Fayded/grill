@@ -9,7 +9,7 @@ export type Course = {
   }>;
   additionalItems?: Array<{
     name: string;
-    price: number;
+    price?: number;
   }>;
   additionalInfo?: Array<{
     name: string;
