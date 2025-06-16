@@ -9,10 +9,15 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/db": "^0.15.0",
+    "@libsql/client": "^0.15.9",
     "@tailwindcss/vite": "^4.1.7",
     "astro": "^5.8.0",
     "grill": "link:",
     "resend": "^4.5.2",
     "tailwindcss": "^4.1.7"
+  },
+  "devDependencies": {
+    "@astrojs/ts-plugin": "^1.10.4"
   }
 }

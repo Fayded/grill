@@ -16,7 +16,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   const data = await request.formData();
   const name = data.get("name")?.toString() || "";
-  const street = data.get("street")?.toString() || "";
+  const address = data.get("address")?.toString() || "";
   const email = data.get("email")?.toString() || "";
   const city = data.get("city")?.toString() || "";
   const zip = data.get("zip")?.toString() || "";
@@ -42,26 +42,23 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   const emailCateringHtml = await container.renderToString(CateringTemplate, {
-    props: { name, street, email, city, zip, date, time, phone, people, service, order, requests },
+    props: { name, address, email, city, zip, date, time, phone, people, service, order, requests },
   });
 
   const sendCateringResend = await resend.emails.send({
     from: 'catering@thegrillatlj.com',
-    to: "bridgette@thegrillatlj.com",
+    to: ['bridgette@thegrillatlj.com', email],
     subject: `Catering for ${name}`,
     html: emailCateringHtml,
   }); 
 
   if (sendCateringResend.data) {
-    return new Response(
-      JSON.stringify({
-        message: `Messages successfully sent!`,
-      }),
-      {
-        status: 200,
-        statusText: "OK",
+    return new Response(null, {
+      status: 302,
+      headers: {
+        Location: "/thank-you",
       },
-    );
+    });
   } else {
     return new Response(
       JSON.stringify({

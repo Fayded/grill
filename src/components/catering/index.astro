@@ -2,7 +2,7 @@
 
 interface Props {
   name: string,
-  street: string,
+  address: string,
   email: string,
   city: string,
   zip: string,
@@ -15,34 +15,21 @@ interface Props {
   requests?: string,
 }
 
-const { name, street, email, city, zip, date, time, phone, people, service, order, requests } = Astro.props;
+const { name, address, email, city, zip, date, time, phone, people, service, order, requests } = Astro.props;
 
 ---
 
 <section class="container catering grid grid-cols-24 gap-4 py-10">
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Name:</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-14 mt-4 uppercase">{name}</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Street:</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-14 mt-4 uppercase">{street}</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Email:</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-14 mt-4 uppercase">{email}</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">City:</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-14 mt-4 uppercase">{city}</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Zip:</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-14 mt-4 uppercase">{zip}</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Date:</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-14 mt-4 uppercase">{date}</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Time:</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-14 mt-4 uppercase">{time}</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Phone:</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-14 mt-4 uppercase">{phone}</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">People:</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-14 mt-4 uppercase">{people}</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Service:</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-14 mt-4 uppercase">{service}</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Order:</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-14 mt-4 uppercase">{order}</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Special Requests:</p>
-    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-14 mt-4 uppercase">{requests}</p>
-  </div>
+    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Name: {name}</p>
+    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Event Address: {address}</p>
+    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Email: {email}</p>
+    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">City: {city}</p>
+    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Zip: {zip}</p>
+    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Date: {date}</p>
+    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Time: {time}</p>
+    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Phone: {phone}</p>
+    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">People: {people}</p>
+    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Service: {service}</p>
+    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Order: {order}</p>
+    <p class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-2 xl:col-start-0 mt-4 uppercase">Special Requests: {requests}</p>
 </section>

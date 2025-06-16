@@ -1,11 +1,10 @@
 ---
 import "../styles/global.css";
-import Email from '../components/email/index.astro';
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import chicken from '../assets/chicken.png';
 import cow from '../assets/cow.png';
 import pig from '../assets/pig.png';
-import map from '../assets/map.svg';
 import map from '../assets/map.svg';
 import building from '../assets/building.png';
 
@@ -21,7 +20,7 @@ const getRandomImage = () => {
 			<h3 class="text-4xl mb-10">HOURS</h3>
 			<div class="flex flex-col items-center">
 				<p class="font-medium">TUESDAY – SATURDAY</p>
-				<p class="font-regular">11:00 AM – 9:00 PM</p>
+				<p class="font-regular">11:00 AM – 8:00 PM</p>
 			</div>
 			<div class="my-8 font-extralight opacity-50">–––––––––––––––––––––</div>
 			<div class="flex flex-col items-center">
@@ -36,11 +35,11 @@ const getRandomImage = () => {
 		</section>
 		<section class="items-center justify-center flex flex-col col-span-22 col-start-2 md:col-span-8 md:col-start-0">
 			{ getRandomImage() === chicken ? (
-				<img class="brightness-50 opacity-75" src={chicken.src} alt="Chicken" />
+				<Image class="brightness-50 opacity-75" src={chicken} alt="Chicken" />
 			) : getRandomImage() === cow ? (
-				<img class="mix-blend-multiply opacity-70 w-[90%]" src={cow.src} alt="Cow" />
+				<Image class="mix-blend-multiply opacity-70 w-[90%]" src={cow} alt="Cow" />
 			) : (
-				<img class="mix-blend-multiply opacity-50 w-[90%]" src={pig.src} alt="Pig" />
+				<Image class="mix-blend-multiply opacity-50 w-[90%]" src={pig} alt="Pig" />
 			)}
 		</section>
 		<section class="p-10 flex flex-col items-center justify-between col-span-22 col-start-2 md:col-span-8 md:col-start-0 my-8 text-primary">
@@ -52,7 +51,6 @@ const getRandomImage = () => {
 				</p>
 				<img src={building.src} alt="Building" class="w-full mt-10 opacity-90" />
 			</div>
-			<!-- <Email /> -->
 		</section>
 	</main>
 </Layout>

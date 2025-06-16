@@ -1,13 +1,26 @@
 import { defineAction } from 'astro:actions';
 import { z } from 'astro:schema';
 
+import { turso } from '../turso'; 
+
 export const server = {
-  register: defineAction({
+  newsletter: defineAction({
+    accept: 'form',
     input: z.object({
-      email: z.string().email('Valid email required'),
+      email: z.string().email(),
     }),
-    handler: async (input) => {
-      return `Hello, ${input.email}!`
-    }
-  })
-}
+    handler: async ({ email }) => {
+      try {
+        await turso.execute({
+          sql: 'INSERT INTO emails (email) VALUES (?)',
+          args: [email],
+        });
+        return {
+          success: true
+        };
+      } catch (error) {
+        throw new Error('Failed to subscribe email.');
+      }
+    },
+  }),
+};
