@@ -12,7 +12,7 @@
     "@astrojs/vercel": "^8.1.5",
     "@libsql/client": "^0.15.9",
     "@tailwindcss/vite": "^4.1.7",
-    "astro": "^5.8.0",
+    "astro": "^5.9.4",
     "grill": "link:",
     "resend": "^4.5.2",
     "tailwindcss": "^4.1.7"
