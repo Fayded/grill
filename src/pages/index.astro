@@ -10,7 +10,7 @@ import building from '../assets/building.png';
 
 const getRandomImage = () => {
 	const images = [chicken, cow, pig];
-	return images[Math.floor(Math.random() * images.length)];
+	return images[Math.floor(Math.random() * images.length)] || cow;
 };
 ---
 
