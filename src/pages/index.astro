@@ -1,16 +1,11 @@
 ---
 import "../styles/global.css";
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
-import chicken from '../assets/chicken.png';
 import cow from '../assets/cow.png';
-import pig from '../assets/pig.png';
 import map from '../assets/map.svg';
 import building from '../assets/building.png';
 
-const getRandomImage = () => {
-	const images = [chicken, cow, pig];
-	return images[Math.floor(Math.random() * images.length)];
-};
 ---
 
 <Layout class="w-full">
@@ -32,14 +27,8 @@ const getRandomImage = () => {
 				<p class="font-regular">CLOSED</p>
 			</div>
 		</section>
-		<section class="items-center justify-center flex flex-col col-span-22 col-start-2 md:col-span-8 md:col-start-0">
-			{ getRandomImage() === chicken ? (
-				<img class="brightness-50 opacity-75" src={chicken.src} alt="Chicken" />
-			) : getRandomImage() === cow ? (
-				<img class="mix-blend-multiply opacity-70 w-[90%]" src={cow.src} alt="Cow" />
-			) : (
-				<img class="mix-blend-multiply opacity-50 w-[90%]" src={pig.src} alt="Pig" />
-			)}
+		<section class="items-center justify-center flex flex-col col-span-22 col-start-2 md:col-span-8 md:col-start-0">			
+			<Image class="mix-blend-multiply opacity-70 w-[90%]" src={cow} alt="Cow" />
 		</section>
 		<section class="p-10 flex flex-col items-center justify-between col-span-22 col-start-2 md:col-span-8 md:col-start-0 my-8 text-primary">
 			<div>
