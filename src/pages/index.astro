@@ -11,26 +11,23 @@ import building from '../assets/building.png';
 <Layout class="w-full">
 	<main class="container grid grid-cols-24">
 		<section class="flex flex-col items-center justify-start my-8 col-span-22 col-start-2 md:col-span-8 md:col-start-0 border border-primary pt-10 pb-8 text-primary">
-			<h3 class="text-4xl mb-10">HOURS</h3>
+			<h3 class="text-4xl">HOURS</h3>
+			<div class="my-8 font-extralight opacity-50">–––––––––––––––––––––</div>	
 			<div class="flex flex-col items-center">
-				<p class="font-medium">TUESDAY – SATURDAY</p>
+				<p class="font-medium mb-2">MONDAY – SATURDAY</p>
 				<p class="font-regular">11:00 AM – 8:00 PM</p>
 			</div>
 			<div class="my-8 font-extralight opacity-50">–––––––––––––––––––––</div>
 			<div class="flex flex-col items-center">
-				<p class="font-medium">SUNDAY</p>
+				<p class="font-medium mb-2">SUNDAY</p>
 				<p class="font-regular">11:00 AM – 3:00 PM</p>
 			</div>
-			<div class="my-8 font-extralight opacity-50">–––––––––––––––––––––</div>
-			<div class="flex flex-col items-center">
-				<p class="font-medium">MONDAY</p>
-				<p class="font-regular">CLOSED</p>
-			</div>
+			<div class="hidden md:block mt-8 font-extralight opacity-50">–––––––––––––––––––––</div>
 		</section>
 		<section class="items-center justify-center flex flex-col col-span-22 col-start-2 md:col-span-8 md:col-start-0">			
 			<Image class="mix-blend-multiply opacity-70 w-[90%]" src={cow} alt="Cow" />
 		</section>
-		<section class="p-10 flex flex-col items-center justify-between col-span-22 col-start-2 md:col-span-8 md:col-start-0 my-8 text-primary">
+		<section class="p-10 sm:pb-0 md:pb-10 flex flex-col items-center justify-between col-span-22 col-start-2 md:col-span-8 md:col-start-0 my-8 text-primary">
 			<div>
 				<h3 class="text-4xl mb-10 flex justify-between items-center">FIND US <a href="https://maps.app.goo.gl/SPYKC3gLM7L8DhgX9" target="_blank" class="block ml-6"><img src={map.src} alt="Find Us" /></a></h3>
 				<p class="text-lg uppercase text-center leading-10">The grill is located 
