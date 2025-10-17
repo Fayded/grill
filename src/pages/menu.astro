@@ -21,11 +21,11 @@ const menu: Course[] = [{
   price: 14, 
   items: [
       { name: 'Feta Chicken', description: 'Dried Cranberries & Candied Walnuts' },
-      { name: 'Chef', description: 'Turkey, Ham, Egg, Tomato, Cheese, Onion, & Cucumber' },
-      { name: 'Grilled Chicken', description: 'Egg, Tomato, Onions, Cheese, & Cucumber' },
-      { name: 'Southern Fried', description: 'Bacon, Egg, Cheese, Tomato, & Croutons' },
-      { name: 'Cobb', description: 'Chicken, Blue Cheese, Bacon, Egg, Onion, & Tomato' },
-      { name: 'Grilled Shrimp', description: 'Tomato, Cucumber, Roasted Corn, Roasted Red Peppers & Mandarin Orange Sesame Ginger Dressing' },
+      { name: 'Chef', description: 'Turkey, Ham, Egg, Tomato, Cheese, Onion & Cucumber' },
+      { name: 'Grilled Chicken', description: 'Egg, Tomato, Onions, Cheese & Cucumber' },
+      { name: 'Southern Fried', description: 'Bacon, Egg, Cheese, Tomato & Croutons  * Make it Buffalo' },
+      { name: 'Cobb', description: 'Chicken, Blue Cheese, Bacon, Egg, Onion & Tomato' },
+      { name: 'Grilled Shrimp', description: 'Tomato, Cucumber, Roasted Corn, Roasted Red Peppers & Mandarin Orange with Sesame Ginger Dressing' },
     ],
   additionalItems: [
     { name: 'Soup & Salad Combo', price: 12 },
@@ -36,13 +36,13 @@ const menu: Course[] = [{
   description: 'Served with One Side',
   items: [
     { name: 'Pulled Pork', price: 11 },
-    { name: 'Mahi Sandwich', price: 14, description: 'Blackened, Lemon Pepper or Plain' },
+    { name: 'Ham & Swiss', price: 13 },
     { name: 'Reuben', price: 12 },
     { name: 'Roasted Turkey Ciabatta', price: 13 },
     { name: 'Fried Flounder', price: 12},
     { name: 'Chicken Salad Sandwich', price: 13},
     { name: 'French Dip Prime Beef', price: 13},
-    { name: 'Ham & Swiss', price: 13 },
+    { name: 'Mahi Sandwich', price: 14, description: 'Blackened, Lemon Pepper or Plain' },
     { name: 'Grilled Chicken', price: 12, description: 'Blackened, Lemon Pepper or Plain' },
   ]
 },
@@ -59,21 +59,21 @@ const menu: Course[] = [{
 },
 {
   course: 'Plates',
-  description: 'Served with Two Side',
+  description: 'Served with Two Sides',
   items: [
     { name: 'Pulled Pork', price: 13 },
     { name: 'Fried Shrimp', price: 17 },
     { name: 'Grilled Chicken', price: 14 },
     { name: 'Hand Breaded Chicken Tenders', price: 16, description: 'Plain or Tossed in Sauce' },
     { name: 'Sliced Prime Beef AuJus', price: 14 },
-    { name: 'Full Rack Baby Back Ribs', price: 19 },
+    { name: 'Full Rack Baby Back Ribs', price: 20 },
     { name: 'Fried Flounder', price: 14 },
-    { name: 'Half Rack Baby Back Ribs', price: 15 },
+    { name: 'Half Rack Baby Back Ribs', price: 16 },
     { name: 'Grilled Mahi', price: 16 },
     { name: '1/2 Roasted Chicken', price: 16 },
-    { name: 'Rib Combo', price: 20, description: 'Choice of Chicken, Beef, Pork or Turkey, Fried or Gilled Shrimp' },
+    { name: 'Rib Combo', price: 20, description: 'Choice of Chicken, Beef, Pork, Turkey, Fried or Grilled Shrimp' },
     { name: 'Roasted Turkey', price: 14 },
-    { name: 'Two Meat Combo', price: 17, description: 'Choice of Chicken, Beef, Pork or Turkey' },
+    { name: 'Two Meat Combo', price: 17, description: 'Choice of Chicken, Beef, Pork, Turkey, Fried or Grilled Shrimp' },
     { name: 'Grilled Shrimp Skewers ', price: 17, description: 'Blackened, Lemon Pepper or Plain' },
   ]
 },
@@ -121,9 +121,7 @@ const menu: Course[] = [{
 },
 {
   course: 'Desserts',
-  additionalItems: [
-    { name: 'Ask your server for our Daily Desserts' },
-  ]
+  description: 'Ask your server for our Daily Desserts',
 },
 ]
 ---
@@ -139,6 +137,7 @@ const menu: Course[] = [{
       <div class="md:w-[91%] md:mx-auto">
         <section class="grid grid-cols-24 text-center">
           <h3 class="text-2xl text-[#EDE1CD] grid-cols-24 uppercase mb-2 col-span-22 col-start-2">{course.course} {course.price && <span>{course.price}</span>}</h3>
+          {course.description && <p class="text-lg font-base uppercase text-primary col-span-22 col-start-2 mb-6">{course.description}</p>}
         </section>
         <ul class="grid grid-cols-24 mb-10">
           {course.items?.map((menuItem) => ( 
