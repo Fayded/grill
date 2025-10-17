@@ -170,9 +170,9 @@ const menu: Course[] = [{
       </div>
       <div class="col-span-22 col-start-2 lg:col-span-10 lg:col-start-14 mt-4">
         <label class="text-base uppercase" for="address">Special requests:</label>
-        <textarea id="requests" name="requests" required class="w-full p-4 mt-2 outline-none text-primary-blue bg-primary font-medium uppercase" />
+        <textarea id="requests" name="requests" required class="w-full p-4 mt-2 outline-none text-primary-blue bg-primary font-medium uppercase"></textarea>
       </div>
-      <button class="catering-link border border-primary col-span-8 col-start-16 lg:col-start-20 lg:col-span-4 cursor-pointer text-nowrap font-normal uppercase px-[28px] py-[16px] leading-none hover:bg-primary hover:text-[#273E5B] flex items-center mt-10 justify-between lg:justify-center">Submit
+      <button type="submit" class="catering-link border border-primary col-span-8 col-start-16 lg:col-start-20 lg:col-span-4 cursor-pointer text-nowrap font-normal uppercase px-[28px] py-[16px] leading-none hover:bg-primary hover:text-[#273E5B] flex items-center mt-10 justify-between lg:justify-center">Submit
         <svg class="ml-4"width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0.794922 17.5H0.793945V17.499L8.43945 9.85352L0.794922 17.5ZM0.794922 0.500977L9.29297 9L8.4541 9.83789L8.46094 9.83105C8.58831 9.68679 8.73558 9.44496 8.78027 9.14941C8.82287 8.86761 8.76835 8.54897 8.5459 8.26562L8.43945 8.14648L0.793945 0.500977H0.794922Z" />
         </svg>
@@ -210,32 +210,40 @@ const menu: Course[] = [{
 </Layout>
 
 <script>
+  const form = document.querySelector('.catering-form') as HTMLFormElement;
+  const submitButton = form?.querySelector('button[type="submit"]');
+  const requiredFields = form?.querySelectorAll('[required]');
+  
   const orderNow = document.getElementById('orderNow');
   const cateringForm = document.querySelector('.catering-form');
+  const cateringLink = document.querySelector('.catering-link');
   
   orderNow?.addEventListener('click', (e) => {
     e.preventDefault();
     cateringForm?.classList.toggle('hidden');
   });
 
-  const cateringLink = document.querySelector('.catering-link');
-  cateringLink?.addEventListener('click', async () => {
-    const form = document.querySelector('.catering-form') as HTMLFormElement | null;
-    if (!form) return;
-    const formData = new FormData(form);
-    const response = await fetch('/api/send-email.json', {
-      method: 'POST',
-      body: formData,
-    });
-
-    if (response.ok) {
-      form.reset();
-      if (cateringLink) {
-        cateringLink.classList.add('hidden');
-      }
-      
+  submitButton?.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const emptyFields = Array.from(requiredFields || []).filter((field) => !(field as HTMLInputElement).value.trim());
+    if (emptyFields.length > 0 || !form) {
+      alert('Please fill out all required fields.');
+      return;
     } else {
-      alert('There was an error submitting your order. Please try again.');
+      const formData = new FormData(form);
+      const response = await fetch('/api/send-email.json', {
+        method: 'POST',
+        body: formData,
+      });
+      if (response.ok) {
+        form.reset();
+        if (cateringLink) {
+          cateringLink.classList.add('hidden');
+        }
+
+      } else {
+        alert('There was an error submitting your order. Please try again.');
+      }
     }
   });
 </script>

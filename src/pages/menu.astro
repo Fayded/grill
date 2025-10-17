@@ -6,11 +6,14 @@ const menu: Course[] = [{
   course: 'Get Started',
   items: [
     { name: 'Onion Rings', price: 9 },
-    { name: 'Side Salad', price: 6 },
-    { name: 'Fried Mushrooms', price: 8 },
+    { name: 'Potato Balls', price: 9 },
+    { name: 'Bowl of Soup', price: 9 },
     { name: 'Corn Fritters', price: 9 },
-    { name: 'Bowl of Chili', price: 6 },
-    { name: 'Chicken Tenders', price: 12, description: 'Ranch or Honey Mustard'}
+    { name: 'Giant Pretzel', price: 11 },
+    { name: 'Fried Mushrooms', price: 9 },
+    { name: 'Cheese Curds', price: 9 },
+    { name: 'Potato Skins', price: 9 },
+    { name: 'Fried Pickles', price: 9 },
   ]
 },
 {
@@ -22,7 +25,7 @@ const menu: Course[] = [{
       { name: 'Grilled Chicken', description: 'Egg, Tomato, Onions, Cheese, & Cucumber' },
       { name: 'Southern Fried', description: 'Bacon, Egg, Cheese, Tomato, & Croutons' },
       { name: 'Cobb', description: 'Chicken, Blue Cheese, Bacon, Egg, Onion, & Tomato' },
-      { name: 'Greek', description: 'Feta, Olives, Tomato, Onions, Cucumber, & Peppers' },
+      { name: 'Grilled Shrimp', description: 'Tomato, Cucumber, Roasted Corn, Roasted Red Peppers & Mandarin Orange Sesame Ginger Dressing' },
     ],
   additionalItems: [
     { name: 'Soup & Salad Combo', price: 12 },
@@ -33,13 +36,25 @@ const menu: Course[] = [{
   description: 'Served with One Side',
   items: [
     { name: 'Pulled Pork', price: 11 },
-    { name: 'Corn Beef-N-Swiss', price: 12 },
+    { name: 'Mahi Sandwich', price: 14, description: 'Blackened, Lemon Pepper or Plain' },
+    { name: 'Reuben', price: 12 },
+    { name: 'Roasted Turkey Ciabatta', price: 13 },
     { name: 'Fried Flounder', price: 12},
-    { name: 'French Dip Choice Beef', price: 13},
-    { name: 'Grilled Chicken', price: 12},
-    { name: 'Turkey Ciabatta', price: 13, description: 'With Tarragon mayo' },
-    { name: 'Mahi Sandwich', price: 14, description: 'Blackened or Lemon Pepper' },
-    { name: 'Daily Sandwich', price: 'MP', description: 'Ask your server!' },
+    { name: 'Chicken Salad Sandwich', price: 13},
+    { name: 'French Dip Prime Beef', price: 13},
+    { name: 'Ham & Swiss', price: 13 },
+    { name: 'Grilled Chicken', price: 12, description: 'Blackened, Lemon Pepper or Plain' },
+  ]
+},
+{
+  course: 'Grilled Steak Burgers',
+  description: 'Served with One Side',
+  items: [
+    { name: 'Traditional Burger', price: 13 },
+    { name: 'Blackened Blue Cheese', price: 15 },
+    { name: 'Mushroom Swiss Burger', price: 15 },
+    { name: 'Rodeo Burger', price: 15, description: 'Topped with Onion Rings & BBQ Sauce' },
+    { name: 'Cheddar Burger', price: 14 },
   ]
 },
 {
@@ -47,39 +62,19 @@ const menu: Course[] = [{
   description: 'Served with Two Side',
   items: [
     { name: 'Pulled Pork', price: 13 },
-    { name: 'Turkey', price: 14 },
+    { name: 'Fried Shrimp', price: 17 },
     { name: 'Grilled Chicken', price: 14 },
-    { name: 'Hand Breaded Chickentenders', price: 16 },
-    { name: 'Sliced Beef AuJus', price: 14 },
+    { name: 'Hand Breaded Chicken Tenders', price: 16, description: 'Plain or Tossed in Sauce' },
+    { name: 'Sliced Prime Beef AuJus', price: 14 },
     { name: 'Full Rack Baby Back Ribs', price: 19 },
     { name: 'Fried Flounder', price: 14 },
     { name: 'Half Rack Baby Back Ribs', price: 15 },
     { name: 'Grilled Mahi', price: 16 },
-    { name: 'Daily Fried Fish', price: 'MP' },
     { name: '1/2 Roasted Chicken', price: 16 },
-    { name: 'Combo Ribs', price: 19, description: 'Choice of Chicken, Beef, Pork or Turkey' },
-    { name: '', price: '' },
+    { name: 'Rib Combo', price: 20, description: 'Choice of Chicken, Beef, Pork or Turkey, Fried or Gilled Shrimp' },
+    { name: 'Roasted Turkey', price: 14 },
     { name: 'Two Meat Combo', price: 17, description: 'Choice of Chicken, Beef, Pork or Turkey' },
-
-  ]
-},
-{
-  course: 'Grilled Steak Burgers',
-  description: 'Served with One Side',
-  items: [
-    { name: 'Traditional Burger', price: 12 },
-    { name: 'Cheddar Burger', price: 13 },
-    { name: 'Swiss Burger', price: 13 },
-    { name: 'Blackened Blue Cheese', price: 14 },
-  ]
-},
-{
-  course: 'Hand Breaded Chicken Tenders',
-  items: [
-    { name: 'Appetizer Basket', price: 12, description: 'Ranch or Honey Mustard' },
-    { name: 'Kids Tenders', price: 6, description: 'Served with One Side' },
-    { name: 'Tenders Platter', price: 16 },
-    { name: 'Southern Fried Salad', price: 14, description: 'Bacon, Egg, Cheese, Tomato, & Croutons' },
+    { name: 'Grilled Shrimp Skewers ', price: 17, description: 'Blackened, Lemon Pepper or Plain' },
   ]
 },
 {
@@ -88,32 +83,46 @@ const menu: Course[] = [{
   items: [
     { name: 'French Fries' },
     { name: 'Collard Greens'},
-    { name: 'Corn Fritters' },
     { name: 'Mac N Cheese' },
+    { name: 'Green Beans' },
     { name: 'Sweet Potato' },
     { name: 'Lima Beans' },
-    { name: 'Baked Beans' },
     { name: 'Onion Rings' },
+    { name: 'Roasted Corn Salad' },
     { name: 'Baked Potato' },
-    { name: 'Roasted Corn Sald' },
-    { name: 'Sweet Potato Fries' },
+    { name: 'Corn Fritters' },
+    { name: 'Side Salad' },
     { name: 'Fried Okra' },
+    { name: 'Baked Beans' },
+    { name: 'Cole Slaw' },
+    { name: 'Sweet Potato Fries' },
+  
   ]
 },
 {
   course: 'Beverages',
   price: 3,
   items: [
-    { name: 'Tea, Soda, Lemonade' },
+    { name: 'Tea', description: 'Sweet & Unsweet' },
+    { name: 'Soda', description: 'Coke Products' },
+    { name: 'Lemonade' },
   ]
 },
 {
-  course: 'Alcoholic Beverages',
+  course: '',
   items: [
-    { name: 'Beer, Wine, Seltzer' },
+    { name: 'Beer' },
+    { name: 'Wine' },
+    { name: 'Seltzer' },
   ],
   additionalItems: [
     { name: 'Ask your server for Selections' },
+  ]
+},
+{
+  course: 'Desserts',
+  additionalItems: [
+    { name: 'Ask your server for our Daily Desserts' },
   ]
 },
 ]
@@ -127,13 +136,13 @@ const menu: Course[] = [{
   </section>
   <section class="container mt-8 pb-10 grid">
     { menu.map((course) => (
-      <div>
-        <section class="grid grid-cols-24">
+      <div class="md:w-[91%] md:mx-auto">
+        <section class="grid grid-cols-24 text-center">
           <h3 class="text-2xl text-[#EDE1CD] grid-cols-24 uppercase mb-2 col-span-22 col-start-2">{course.course} {course.price && <span>{course.price}</span>}</h3>
         </section>
         <ul class="grid grid-cols-24 mb-10">
           {course.items?.map((menuItem) => ( 
-            <li class="col-span-22 col-start-2 md:col-span-24 md:col-start-2 pr-5 mt-4">
+            <li class="col-span-22 col-start-2 md:col-span-8 md:nth-child(3):col-start-2 pr-5 mt-6">
               <p class={menuItem.description ? "text-[#F0DBBA] uppercase" : "text-lg font-base uppercase text-primary"}>
                 {menuItem.name} {menuItem.price ? menuItem.price : null }
               </p>
