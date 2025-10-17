@@ -6,6 +6,7 @@ export type Course = {
     name: string;
     price?: number | string;
     description?: string;
+    size?: 'small' | 'medium' | 'large';
   }>;
   additionalItems?: Array<{
     name: string;

@@ -19,6 +19,7 @@ const menu: Course[] = [{
 {
   course: 'Fresh Salads',
   price: 14, 
+  description: 'Soup & Salad Combo 12',  
   items: [
       { name: 'Feta Chicken', description: 'Dried Cranberries & Candied Walnuts' },
       { name: 'Chef', description: 'Turkey, Ham, Egg, Tomato, Cheese, Onion & Cucumber' },
@@ -27,9 +28,6 @@ const menu: Course[] = [{
       { name: 'Cobb', description: 'Chicken, Blue Cheese, Bacon, Egg, Onion & Tomato' },
       { name: 'Grilled Shrimp', description: 'Tomato, Cucumber, Roasted Corn, Roasted Red Peppers & Mandarin Orange with Sesame Ginger Dressing' },
     ],
-  additionalItems: [
-    { name: 'Soup & Salad Combo', price: 12 },
-  ]
 },
 {
   course: 'Sandwiches',
@@ -64,7 +62,7 @@ const menu: Course[] = [{
     { name: 'Pulled Pork', price: 13 },
     { name: 'Fried Shrimp', price: 17 },
     { name: 'Grilled Chicken', price: 14 },
-    { name: 'Hand Breaded Chicken Tenders', price: 16, description: 'Plain or Tossed in Sauce' },
+    { name: 'Roasted Turkey', price: 14 },
     { name: 'Sliced Prime Beef AuJus', price: 14 },
     { name: 'Full Rack Baby Back Ribs', price: 20 },
     { name: 'Fried Flounder', price: 14 },
@@ -72,7 +70,7 @@ const menu: Course[] = [{
     { name: 'Grilled Mahi', price: 16 },
     { name: '1/2 Roasted Chicken', price: 16 },
     { name: 'Rib Combo', price: 20, description: 'Choice of Chicken, Beef, Pork, Turkey, Fried or Grilled Shrimp' },
-    { name: 'Roasted Turkey', price: 14 },
+    { name: 'Hand Breaded Chicken Tenders', price: 16, description: 'Plain or Tossed in Sauce' },
     { name: 'Two Meat Combo', price: 17, description: 'Choice of Chicken, Beef, Pork, Turkey, Fried or Grilled Shrimp' },
     { name: 'Grilled Shrimp Skewers ', price: 17, description: 'Blackened, Lemon Pepper or Plain' },
   ]
@@ -102,21 +100,14 @@ const menu: Course[] = [{
 {
   course: 'Beverages',
   price: 3,
+  description: 'Ask your server for Selections',
   items: [
     { name: 'Tea', description: 'Sweet & Unsweet' },
     { name: 'Soda', description: 'Coke Products' },
     { name: 'Lemonade' },
-  ]
-},
-{
-  course: '',
-  items: [
-    { name: 'Beer' },
-    { name: 'Wine' },
-    { name: 'Seltzer' },
-  ],
-  additionalItems: [
-    { name: 'Ask your server for Selections' },
+    { name: 'Beer', size: 'large' },
+    { name: 'Wine', size: 'large' },
+    { name: 'Seltzer', size: 'large' },
   ]
 },
 {
@@ -137,20 +128,30 @@ const menu: Course[] = [{
       <div class="md:w-[91%] md:mx-auto">
         <section class="grid grid-cols-24 text-center">
           <h3 class="text-2xl text-[#EDE1CD] grid-cols-24 uppercase mb-2 col-span-22 col-start-2">{course.course} {course.price && <span>{course.price}</span>}</h3>
-          {course.description && <p class="text-lg font-base uppercase text-primary col-span-22 col-start-2 mb-6">{course.description}</p>}
+          {course.description && <p class="text-lg font-base uppercase text-primary col-span-22 col-start-2 mb-2">{course.description}</p>}
         </section>
         <ul class="grid grid-cols-24 mb-10">
           {course.items?.map((menuItem) => ( 
-            <li class="col-span-22 col-start-2 md:col-span-8 md:nth-child(3):col-start-2 pr-5 mt-6">
-              <p class={menuItem.description ? "text-[#F0DBBA] uppercase" : "text-lg font-base uppercase text-primary"}>
+            menuItem.size && (
+              <li class="col-span-22 col-start-2 md:col-span-8 md:nth-child(3):col-start-2 pr-5 mt-6">
+                <p class={menuItem.description ? "text-[#F0DBBA] uppercase" : "text-5xl uppercase"}>
+                  {menuItem.name} {menuItem.price ? menuItem.price : null }
+                </p>
+            </li>
+            ) || (
+            !menuItem.size && (
+              <li class="col-span-22 col-start-2 md:col-span-8 md:nth-child(3):col-start-2 pr-5 mt-6">
+              <p class={menuItem.description ? "text-[#F0DBBA] uppercase" : "font-base uppercase text-primary"}>
                 {menuItem.name} {menuItem.price ? menuItem.price : null }
               </p>
               <p class="uppercase">
                 {menuItem.description && <span>{menuItem.description}</span>}
               </p>
             </li>
-          ))}
-          {course.additionalItems?.map((additionalItem) => (
+          )
+        )))}
+
+        {course.additionalItems?.map((additionalItem) => (
             <li class="col-span-24 pr-5 my-12 text-center">
               <p class="text-[#F0DBBA] uppercase">{additionalItem.name} {additionalItem.price ? additionalItem.price : null }</p>
             </li>
