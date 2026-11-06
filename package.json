@@ -9,15 +9,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/vercel": "^8.1.5",
+    "@astrojs/vercel": "^11.0.20",
     "@libsql/client": "^0.15.9",
     "@tailwindcss/vite": "^4.1.7",
-    "astro": "^5.9.4",
+    "astro": "^7.4.7",
     "grill": "link:",
     "resend": "^4.5.2",
     "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
-    "@astrojs/ts-plugin": "^1.10.4"
+    "@astrojs/ts-plugin": "^1.10.12"
   }
 }
