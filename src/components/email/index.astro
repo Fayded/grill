@@ -2,7 +2,9 @@
 ---
 
 <form method="POST" id="email-form" class="flex items-center border email-form" enctype="application/x-www-form-urlencoded" aria-label="Subscribe to our newsletter">
-  <input transition:persist id="email" required type="email" name="email" placeholder="Join our mailing list" class="uppercase w-60 p-3 leading-none outline:none focus:outline-none text-primary placeholder:text-primary" aria-describedby="error" />  
+  <input type="text" name="website" autocomplete="off" tabindex="-1" class="absolute opacity-0 h-0 w-0 overflow-hidden pointer-events-none" aria-hidden="true" />
+  <input type="hidden" name="_t" value="" />
+  <input transition:persist id="email" required type="email" name="email" placeholder="Join our mailing list" class="uppercase w-60 p-3 leading-none outline:none focus:outline-none text-primary placeholder:text-primary" aria-describedby="error" />
   <button type="submit" class="w-[44px] p-4 border-l h-[44px] border-primary flex items-center justify-center bg-primary-blue hover:bg-primary text-primary hover:text-[#E7DECF] transition-colors duration-300 stroke-primary hover:stroke-primary-blue cursor-pointer" aria-label="Subscribe to our newsletter">
     <svg viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0.794922 17.5H0.793945V17.499L8.43945 9.85352L0.794922 17.5ZM0.794922 0.500977L9.29297 9L8.4541 9.83789L8.46094 9.83105C8.58831 9.68679 8.73558 9.44496 8.78027 9.14941C8.82287 8.86761 8.76835 8.54897 8.5459 8.26562L8.43945 8.14648L0.793945 0.500977H0.794922Z" />
@@ -14,12 +16,16 @@
   import { actions } from "astro:actions";
   const form = document.getElementById('email-form') as HTMLFormElement | null;
   if (form) {
+    const tField = form.querySelector('input[name="_t"]') as HTMLInputElement;
+    if (tField) tField.value = Date.now().toString();
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
       await actions.newsletter(formData);
       form.reset();
+      if (tField) tField.value = Date.now().toString();
       alert('Thank you for subscribing!');
     });
-  } 
+  }
 </script>

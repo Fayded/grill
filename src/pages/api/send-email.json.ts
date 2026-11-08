@@ -1,4 +1,4 @@
-export const prerender = false; 
+export const prerender = false;
 
 import type { APIRoute } from "astro";
 import { experimental_AstroContainer } from 'astro/container';
@@ -11,33 +11,69 @@ if (!resendApiKey) {
 }
 const resend = new Resend(resendApiKey);
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const ALLOWED_SERVICES = new Set(["pickup", "delivered", "catered"]);
+const MIN_SUBMIT_MS = 2000;
+
+function str(data: FormData, key: string, maxLen: number): string {
+  return (data.get(key)?.toString() || "").slice(0, maxLen);
+}
+
 export const POST: APIRoute = async ({ request }) => {
-  const container = await experimental_AstroContainer.create();
+  const origin = request.headers.get("origin");
+  const siteUrl = import.meta.env.SITE || import.meta.env.VERCEL_URL;
+  if (origin && siteUrl && !siteUrl.startsWith(origin) && !origin.endsWith(new URL(siteUrl.startsWith("http") ? siteUrl : `https://${siteUrl}`).hostname)) {
+    return new Response(JSON.stringify({ message: "Forbidden" }), { status: 403 });
+  }
 
   const data = await request.formData();
-  const name = data.get("name")?.toString() || "";
-  const address = data.get("address")?.toString() || "";
-  const email = data.get("email")?.toString() || "";
-  const city = data.get("city")?.toString() || "";
-  const zip = data.get("zip")?.toString() || "";
-  const date = data.get("date")?.toString() || "";
-  const time = data.get("time")?.toString() || "";
-  const phone = data.get("phone")?.toString() || "";
+
+  if (data.get("website")?.toString()) {
+    return new Response(null, { status: 302, headers: { Location: "/thank-you" } });
+  }
+
+  const timestamp = data.get("_t")?.toString();
+  if (timestamp) {
+    const elapsed = Date.now() - Number(timestamp);
+    if (elapsed < MIN_SUBMIT_MS) {
+      return new Response(null, { status: 302, headers: { Location: "/thank-you" } });
+    }
+  }
+
+  const container = await experimental_AstroContainer.create();
+
+  const name = str(data, "name", 200);
+  const address = str(data, "address", 500);
+  const email = str(data, "email", 254);
+  const city = str(data, "city", 100);
+  const zip = str(data, "zip", 10);
+  const date = str(data, "date", 10);
+  const time = str(data, "time", 5);
+  const phone = str(data, "phone", 20);
   const peopleValue = data.get("people");
-  const people = peopleValue !== null ? parseInt(peopleValue.toString(), 10) : 1;
-  const service = data.get("service")?.toString() || "pickup";
-  const order = data.get("order")?.toString() || "";
-  const requests = data.get("requests")?.toString() || "";
-  
-  if (!name) {
+  const people = peopleValue !== null ? Math.max(1, Math.min(10000, parseInt(peopleValue.toString(), 10) || 1)) : 1;
+  const service = str(data, "service", 20);
+  const order = str(data, "order", 5000);
+  const requests = str(data, "requests", 5000);
+
+  if (!name || !email || !address || !city || !zip || !phone || !order) {
     return new Response(
-      JSON.stringify({
-        message: `Fill out all fields.`,
-      }),
-      {
-        status: 400,
-        statusText: "Did not provide the right data",
-      }
+      JSON.stringify({ message: "Fill out all required fields." }),
+      { status: 400 },
+    );
+  }
+
+  if (!EMAIL_RE.test(email)) {
+    return new Response(
+      JSON.stringify({ message: "Invalid email address." }),
+      { status: 400 },
+    );
+  }
+
+  if (!ALLOWED_SERVICES.has(service)) {
+    return new Response(
+      JSON.stringify({ message: "Invalid service type." }),
+      { status: 400 },
     );
   }
 
@@ -48,26 +84,19 @@ export const POST: APIRoute = async ({ request }) => {
   const sendCateringResend = await resend.emails.send({
     from: 'catering@thegrillatlj.com',
     to: ['bridgette@thegrillatlj.com', email],
-    subject: `Catering for ${name}`,
+    subject: `Catering for ${name.slice(0, 100)}`,
     html: emailCateringHtml,
-  }); 
+  });
 
   if (sendCateringResend.data) {
     return new Response(null, {
       status: 302,
-      headers: {
-        Location: "/thank-you",
-      },
+      headers: { Location: "/thank-you" },
     });
   } else {
     return new Response(
-      JSON.stringify({
-        message: `Messages failed to send: User- ${JSON.stringify(sendCateringResend.error)}`,
-      }),
-      {
-        status: 500,
-        statusText: `Internal Server Error: User- ${JSON.stringify(sendCateringResend.error)}`,
-      },
+      JSON.stringify({ message: "Failed to send. Please try again." }),
+      { status: 500 },
     );
   }
 }
